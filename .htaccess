@@ -1,0 +1,71 @@
+Options -Indexes
+
+# --- Конфигурация почты не должна читаться извне ---
+<Files "mail-settings.php">
+    Require all denied
+</Files>
+
+# --- Служебные файлы, резервные копии, инструкции ---
+# Обычные .txt не блокируем целиком, чтобы robots.txt остался доступен роботу.
+<FilesMatch "^(?:\.htaccess|\.htpasswd|\.env|\.git.*|composer\.(json|lock)|.+_(?:bak|old|orig|save|swp|log|sql|ini|conf|yml|yaml))$">
+    Require all denied
+</FilesMatch>
+<FilesMatch "\.(?:bak|old|orig|save|swp|sql|ini|conf|sh)$">
+    Require all denied
+</FilesMatch>
+# Файл инструкции для REG.RU не должен отдаваться посетителям
+<FilesMatch "^ИНСТРУКЦИЯ.*\.txt$">
+    Require all denied
+</FilesMatch>
+# Скрипты сборки закрывает tools/.htaccess (DirectoryMatch в per-dir конфиге запрещён)
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# --- MIME-типы для современных форматов изображений ---
+<IfModule mod_mime.c>
+    AddType image/webp .webp
+    AddType image/avif .avif
+</IfModule>
+
+# --- Сжатие HTML/CSS/JS/SVG/JSON (изображения не включаем: они уже сжаты) ---
+<IfModule mod_deflate.c>
+    <IfModule mod_filter.c>
+        AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/x-javascript application/json image/svg+xml
+    </IfModule>
+</IfModule>
+
+# --- Кэширование статических ассетов ---
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 0 seconds"
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType text/javascript "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 30 days"
+    ExpiresByType image/png "access plus 30 days"
+    ExpiresByType image/webp "access plus 30 days"
+    ExpiresByType image/avif "access plus 30 days"
+    ExpiresByType image/svg+xml "access plus 30 days"
+    ExpiresByType image/x-icon "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+    # CSS/JS переживаются через ?v= в index.html, поэтому кэш можно держать долго
+    <FilesMatch "\.(?:css|js)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    <FilesMatch "\.(?:jpe?g|png|webp|avif|gif|svg|ico)$">
+        Header set Cache-Control "public, max-age=2592000"
+    </FilesMatch>
+    # HTML и PHP — с ревалидацией, чтобы правки были видны сразу
+    <FilesMatch "\.(?:html|php)$">
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
+    # Ответ формы не кэшируем никогда
+    <Files "send.php">
+        Header set Cache-Control "no-store"
+    </Files>
+</IfModule>

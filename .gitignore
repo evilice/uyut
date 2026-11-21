@@ -1,0 +1,15 @@
+.DS_Store
+Thumbs.db
+*.bak
+*.orig
+*.save
+*.swp
+*.log
+
+# Локальные архивы: в старых были тестовые заявки и чужой почтовый ключ
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.rar

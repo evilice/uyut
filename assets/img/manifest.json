@@ -1,0 +1,1104 @@
+{
+ "assets/master-classes-jpeg/photo-01.jpg": {
+  "source": "assets/master-classes-jpeg/photo-01.jpg",
+  "natural": [
+   1536,
+   2048
+  ],
+  "css_max": 385,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/classes/photo-01-770.webp",
+     "bytes": 56934,
+     "w": 770,
+     "h": 1027
+    },
+    "avif": {
+     "path": "assets/img/classes/photo-01-770.avif",
+     "bytes": 29997,
+     "w": 770,
+     "h": 1027
+    }
+   }
+  ]
+ },
+ "assets/master-classes-jpeg/photo-02.jpg": {
+  "source": "assets/master-classes-jpeg/photo-02.jpg",
+  "natural": [
+   1536,
+   2048
+  ],
+  "css_max": 385,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/classes/photo-02-770.webp",
+     "bytes": 80740,
+     "w": 770,
+     "h": 1027
+    },
+    "avif": {
+     "path": "assets/img/classes/photo-02-770.avif",
+     "bytes": 38820,
+     "w": 770,
+     "h": 1027
+    }
+   }
+  ]
+ },
+ "assets/master-classes-jpeg/photo-03.jpg": {
+  "source": "assets/master-classes-jpeg/photo-03.jpg",
+  "natural": [
+   1004,
+   1200
+  ],
+  "css_max": 385,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/classes/photo-03-770.webp",
+     "bytes": 59996,
+     "w": 770,
+     "h": 920
+    },
+    "avif": {
+     "path": "assets/img/classes/photo-03-770.avif",
+     "bytes": 34703,
+     "w": 770,
+     "h": 920
+    }
+   }
+  ]
+ },
+ "assets/master-classes-jpeg/photo-04.jpg": {
+  "source": "assets/master-classes-jpeg/photo-04.jpg",
+  "natural": [
+   1536,
+   2048
+  ],
+  "css_max": 385,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/classes/photo-04-770.webp",
+     "bytes": 60886,
+     "w": 770,
+     "h": 1027
+    },
+    "avif": {
+     "path": "assets/img/classes/photo-04-770.avif",
+     "bytes": 33655,
+     "w": 770,
+     "h": 1027
+    }
+   }
+  ]
+ },
+ "assets/master-classes-jpeg/photo-05.jpg": {
+  "source": "assets/master-classes-jpeg/photo-05.jpg",
+  "natural": [
+   1536,
+   2048
+  ],
+  "css_max": 385,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/classes/photo-05-770.webp",
+     "bytes": 112336,
+     "w": 770,
+     "h": 1027
+    },
+    "avif": {
+     "path": "assets/img/classes/photo-05-770.avif",
+     "bytes": 52167,
+     "w": 770,
+     "h": 1027
+    }
+   }
+  ]
+ },
+ "assets/master-classes-jpeg/photo-06.jpg": {
+  "source": "assets/master-classes-jpeg/photo-06.jpg",
+  "natural": [
+   1200,
+   1600
+  ],
+  "css_max": 385,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/classes/photo-06-770.webp",
+     "bytes": 87584,
+     "w": 770,
+     "h": 1027
+    },
+    "avif": {
+     "path": "assets/img/classes/photo-06-770.avif",
+     "bytes": 41884,
+     "w": 770,
+     "h": 1027
+    }
+   }
+  ]
+ },
+ "assets/master-classes-jpeg/photo-07.jpg": {
+  "source": "assets/master-classes-jpeg/photo-07.jpg",
+  "natural": [
+   1536,
+   2048
+  ],
+  "css_max": 385,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/classes/photo-07-770.webp",
+     "bytes": 99390,
+     "w": 770,
+     "h": 1027
+    },
+    "avif": {
+     "path": "assets/img/classes/photo-07-770.avif",
+     "bytes": 45723,
+     "w": 770,
+     "h": 1027
+    }
+   }
+  ]
+ },
+ "assets/master-classes-jpeg/photo-08.jpg": {
+  "source": "assets/master-classes-jpeg/photo-08.jpg",
+  "natural": [
+   941,
+   1672
+  ],
+  "css_max": 385,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/classes/photo-08-770.webp",
+     "bytes": 148458,
+     "w": 770,
+     "h": 1368
+    },
+    "avif": {
+     "path": "assets/img/classes/photo-08-770.avif",
+     "bytes": 71849,
+     "w": 770,
+     "h": 1368
+    }
+   }
+  ]
+ },
+ "assets/master-classes-jpeg/photo-09.jpg": {
+  "source": "assets/master-classes-jpeg/photo-09.jpg",
+  "natural": [
+   2048,
+   1536
+  ],
+  "css_max": 385,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/classes/photo-09-770.webp",
+     "bytes": 51514,
+     "w": 770,
+     "h": 578
+    },
+    "avif": {
+     "path": "assets/img/classes/photo-09-770.avif",
+     "bytes": 24973,
+     "w": 770,
+     "h": 578
+    }
+   }
+  ]
+ },
+ "assets/master-classes-jpeg/photo-10.jpg": {
+  "source": "assets/master-classes-jpeg/photo-10.jpg",
+  "natural": [
+   1200,
+   1600
+  ],
+  "css_max": 385,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/classes/photo-10-770.webp",
+     "bytes": 60120,
+     "w": 770,
+     "h": 1027
+    },
+    "avif": {
+     "path": "assets/img/classes/photo-10-770.avif",
+     "bytes": 34007,
+     "w": 770,
+     "h": 1027
+    }
+   }
+  ]
+ },
+ "assets/master-classes-jpeg/photo-11.jpg": {
+  "source": "assets/master-classes-jpeg/photo-11.jpg",
+  "natural": [
+   1536,
+   2048
+  ],
+  "css_max": 385,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/classes/photo-11-770.webp",
+     "bytes": 131774,
+     "w": 770,
+     "h": 1027
+    },
+    "avif": {
+     "path": "assets/img/classes/photo-11-770.avif",
+     "bytes": 59350,
+     "w": 770,
+     "h": 1027
+    }
+   }
+  ]
+ },
+ "assets/master-classes-jpeg/photo-12.jpg": {
+  "source": "assets/master-classes-jpeg/photo-12.jpg",
+  "natural": [
+   1080,
+   1080
+  ],
+  "css_max": 385,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/classes/photo-12-770.webp",
+     "bytes": 67624,
+     "w": 770,
+     "h": 770
+    },
+    "avif": {
+     "path": "assets/img/classes/photo-12-770.avif",
+     "bytes": 33297,
+     "w": 770,
+     "h": 770
+    }
+   }
+  ]
+ },
+ "assets/master-classes-jpeg/photo-13.jpg": {
+  "source": "assets/master-classes-jpeg/photo-13.jpg",
+  "natural": [
+   1280,
+   1707
+  ],
+  "css_max": 385,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/classes/photo-13-770.webp",
+     "bytes": 55344,
+     "w": 770,
+     "h": 1027
+    },
+    "avif": {
+     "path": "assets/img/classes/photo-13-770.avif",
+     "bytes": 32990,
+     "w": 770,
+     "h": 1027
+    }
+   }
+  ]
+ },
+ "assets/master-classes-jpeg/photo-14.jpg": {
+  "source": "assets/master-classes-jpeg/photo-14.jpg",
+  "natural": [
+   2048,
+   1799
+  ],
+  "css_max": 385,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/classes/photo-14-770.webp",
+     "bytes": 95304,
+     "w": 770,
+     "h": 676
+    },
+    "avif": {
+     "path": "assets/img/classes/photo-14-770.avif",
+     "bytes": 40369,
+     "w": 770,
+     "h": 676
+    }
+   }
+  ]
+ },
+ "assets/master-classes-jpeg/photo-15.jpg": {
+  "source": "assets/master-classes-jpeg/photo-15.jpg",
+  "natural": [
+   1536,
+   2048
+  ],
+  "css_max": 385,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/classes/photo-15-770.webp",
+     "bytes": 62754,
+     "w": 770,
+     "h": 1027
+    },
+    "avif": {
+     "path": "assets/img/classes/photo-15-770.avif",
+     "bytes": 32786,
+     "w": 770,
+     "h": 1027
+    }
+   }
+  ]
+ },
+ "assets/embedded/original-01.png": {
+  "source": "assets/embedded/original-01.png",
+  "natural": [
+   753,
+   563
+  ],
+  "css_max": 385,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/classes/original-01-753.webp",
+     "bytes": 46240,
+     "w": 753,
+     "h": 563
+    },
+    "avif": {
+     "path": "assets/img/classes/original-01-753.avif",
+     "bytes": 23572,
+     "w": 753,
+     "h": 563
+    }
+   }
+  ]
+ },
+ "assets/embedded/original-02.png": {
+  "source": "assets/embedded/original-02.png",
+  "natural": [
+   753,
+   563
+  ],
+  "css_max": 385,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/classes/original-02-753.webp",
+     "bytes": 55804,
+     "w": 753,
+     "h": 563
+    },
+    "avif": {
+     "path": "assets/img/classes/original-02-753.avif",
+     "bytes": 27911,
+     "w": 753,
+     "h": 563
+    }
+   }
+  ]
+ },
+ "assets/embedded/original-03.png": {
+  "source": "assets/embedded/original-03.png",
+  "natural": [
+   753,
+   563
+  ],
+  "css_max": 385,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/classes/original-03-753.webp",
+     "bytes": 78950,
+     "w": 753,
+     "h": 563
+    },
+    "avif": {
+     "path": "assets/img/classes/original-03-753.avif",
+     "bytes": 34701,
+     "w": 753,
+     "h": 563
+    }
+   }
+  ]
+ },
+ "assets/embedded/original-04.png": {
+  "source": "assets/embedded/original-04.png",
+  "natural": [
+   753,
+   563
+  ],
+  "css_max": 385,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/classes/original-04-753.webp",
+     "bytes": 27966,
+     "w": 753,
+     "h": 563
+    },
+    "avif": {
+     "path": "assets/img/classes/original-04-753.avif",
+     "bytes": 17009,
+     "w": 753,
+     "h": 563
+    }
+   }
+  ]
+ },
+ "assets/embedded/original-05.png": {
+  "source": "assets/embedded/original-05.png",
+  "natural": [
+   753,
+   563
+  ],
+  "css_max": 385,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/classes/original-05-753.webp",
+     "bytes": 144108,
+     "w": 753,
+     "h": 563
+    },
+    "avif": {
+     "path": "assets/img/classes/original-05-753.avif",
+     "bytes": 55897,
+     "w": 753,
+     "h": 563
+    }
+   }
+  ]
+ },
+ "assets/embedded/original-06.png": {
+  "source": "assets/embedded/original-06.png",
+  "natural": [
+   753,
+   563
+  ],
+  "css_max": 385,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/classes/original-06-753.webp",
+     "bytes": 31964,
+     "w": 753,
+     "h": 563
+    },
+    "avif": {
+     "path": "assets/img/classes/original-06-753.avif",
+     "bytes": 17219,
+     "w": 753,
+     "h": 563
+    }
+   }
+  ]
+ },
+ "assets/guests/gosti-cheburashka.jpg": {
+  "source": "assets/guests/gosti-cheburashka.jpg",
+  "natural": [
+   1536,
+   2048
+  ],
+  "css_max": 384,
+  "css_mobile": 176,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/guests/gosti-cheburashka-352.webp",
+     "bytes": 20906,
+     "w": 352,
+     "h": 469
+    },
+    "avif": {
+     "path": "assets/img/guests/gosti-cheburashka-352.avif",
+     "bytes": 10915,
+     "w": 352,
+     "h": 469
+    }
+   },
+   {
+    "webp": {
+     "path": "assets/img/guests/gosti-cheburashka-768.webp",
+     "bytes": 62954,
+     "w": 768,
+     "h": 1024
+    },
+    "avif": {
+     "path": "assets/img/guests/gosti-cheburashka-768.avif",
+     "bytes": 35256,
+     "w": 768,
+     "h": 1024
+    }
+   }
+  ],
+  "full": {
+   "webp": {
+    "path": "assets/img/guests/gosti-cheburashka-1096.webp",
+    "bytes": 101004,
+    "w": 1096,
+    "h": 1461
+   },
+   "avif": {
+    "path": "assets/img/guests/gosti-cheburashka-1096.avif",
+    "bytes": 57723,
+    "w": 1096,
+    "h": 1461
+   }
+  }
+ },
+ "assets/guests/gosti-lebed-i-cvety.jpg": {
+  "source": "assets/guests/gosti-lebed-i-cvety.jpg",
+  "natural": [
+   1536,
+   2048
+  ],
+  "css_max": 384,
+  "css_mobile": 176,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/guests/gosti-lebed-i-cvety-352.webp",
+     "bytes": 19540,
+     "w": 352,
+     "h": 469
+    },
+    "avif": {
+     "path": "assets/img/guests/gosti-lebed-i-cvety-352.avif",
+     "bytes": 10119,
+     "w": 352,
+     "h": 469
+    }
+   },
+   {
+    "webp": {
+     "path": "assets/img/guests/gosti-lebed-i-cvety-768.webp",
+     "bytes": 69282,
+     "w": 768,
+     "h": 1024
+    },
+    "avif": {
+     "path": "assets/img/guests/gosti-lebed-i-cvety-768.avif",
+     "bytes": 34426,
+     "w": 768,
+     "h": 1024
+    }
+   }
+  ],
+  "full": {
+   "webp": {
+    "path": "assets/img/guests/gosti-lebed-i-cvety-1096.webp",
+    "bytes": 124636,
+    "w": 1096,
+    "h": 1461
+   },
+   "avif": {
+    "path": "assets/img/guests/gosti-lebed-i-cvety-1096.avif",
+    "bytes": 63205,
+    "w": 1096,
+    "h": 1461
+   }
+  }
+ },
+ "assets/guests/gosti-mozaika.jpg": {
+  "source": "assets/guests/gosti-mozaika.jpg",
+  "natural": [
+   1536,
+   2048
+  ],
+  "css_max": 384,
+  "css_mobile": 176,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/guests/gosti-mozaika-352.webp",
+     "bytes": 18500,
+     "w": 352,
+     "h": 469
+    },
+    "avif": {
+     "path": "assets/img/guests/gosti-mozaika-352.avif",
+     "bytes": 9680,
+     "w": 352,
+     "h": 469
+    }
+   },
+   {
+    "webp": {
+     "path": "assets/img/guests/gosti-mozaika-768.webp",
+     "bytes": 58364,
+     "w": 768,
+     "h": 1024
+    },
+    "avif": {
+     "path": "assets/img/guests/gosti-mozaika-768.avif",
+     "bytes": 30573,
+     "w": 768,
+     "h": 1024
+    }
+   }
+  ],
+  "full": {
+   "webp": {
+    "path": "assets/img/guests/gosti-mozaika-1096.webp",
+    "bytes": 98128,
+    "w": 1096,
+    "h": 1461
+   },
+   "avif": {
+    "path": "assets/img/guests/gosti-mozaika-1096.avif",
+    "bytes": 51303,
+    "w": 1096,
+    "h": 1461
+   }
+  }
+ },
+ "assets/guests/gosti-prazdnik.jpg": {
+  "source": "assets/guests/gosti-prazdnik.jpg",
+  "natural": [
+   1536,
+   2048
+  ],
+  "css_max": 384,
+  "css_mobile": 176,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/guests/gosti-prazdnik-352.webp",
+     "bytes": 36998,
+     "w": 352,
+     "h": 469
+    },
+    "avif": {
+     "path": "assets/img/guests/gosti-prazdnik-352.avif",
+     "bytes": 15983,
+     "w": 352,
+     "h": 469
+    }
+   },
+   {
+    "webp": {
+     "path": "assets/img/guests/gosti-prazdnik-768.webp",
+     "bytes": 142244,
+     "w": 768,
+     "h": 1024
+    },
+    "avif": {
+     "path": "assets/img/guests/gosti-prazdnik-768.avif",
+     "bytes": 58818,
+     "w": 768,
+     "h": 1024
+    }
+   }
+  ],
+  "full": {
+   "webp": {
+    "path": "assets/img/guests/gosti-prazdnik-1096.webp",
+    "bytes": 248696,
+    "w": 1096,
+    "h": 1461
+   },
+   "avif": {
+    "path": "assets/img/guests/gosti-prazdnik-1096.avif",
+    "bytes": 106054,
+    "w": 1096,
+    "h": 1461
+   }
+  }
+ },
+ "assets/guests/gosti-sladkoe-tvorchestvo.jpg": {
+  "source": "assets/guests/gosti-sladkoe-tvorchestvo.jpg",
+  "natural": [
+   1536,
+   2048
+  ],
+  "css_max": 384,
+  "css_mobile": 176,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/guests/gosti-sladkoe-tvorchestvo-352.webp",
+     "bytes": 14456,
+     "w": 352,
+     "h": 469
+    },
+    "avif": {
+     "path": "assets/img/guests/gosti-sladkoe-tvorchestvo-352.avif",
+     "bytes": 8223,
+     "w": 352,
+     "h": 469
+    }
+   },
+   {
+    "webp": {
+     "path": "assets/img/guests/gosti-sladkoe-tvorchestvo-768.webp",
+     "bytes": 57840,
+     "w": 768,
+     "h": 1024
+    },
+    "avif": {
+     "path": "assets/img/guests/gosti-sladkoe-tvorchestvo-768.avif",
+     "bytes": 30000,
+     "w": 768,
+     "h": 1024
+    }
+   }
+  ],
+  "full": {
+   "webp": {
+    "path": "assets/img/guests/gosti-sladkoe-tvorchestvo-1096.webp",
+    "bytes": 112354,
+    "w": 1096,
+    "h": 1461
+   },
+   "avif": {
+    "path": "assets/img/guests/gosti-sladkoe-tvorchestvo-1096.avif",
+    "bytes": 58422,
+    "w": 1096,
+    "h": 1461
+   }
+  }
+ },
+ "assets/guests/gosti-zhivopis-gory.jpg": {
+  "source": "assets/guests/gosti-zhivopis-gory.jpg",
+  "natural": [
+   1536,
+   2048
+  ],
+  "css_max": 384,
+  "css_mobile": 176,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/guests/gosti-zhivopis-gory-352.webp",
+     "bytes": 17026,
+     "w": 352,
+     "h": 469
+    },
+    "avif": {
+     "path": "assets/img/guests/gosti-zhivopis-gory-352.avif",
+     "bytes": 9756,
+     "w": 352,
+     "h": 469
+    }
+   },
+   {
+    "webp": {
+     "path": "assets/img/guests/gosti-zhivopis-gory-768.webp",
+     "bytes": 59366,
+     "w": 768,
+     "h": 1024
+    },
+    "avif": {
+     "path": "assets/img/guests/gosti-zhivopis-gory-768.avif",
+     "bytes": 31048,
+     "w": 768,
+     "h": 1024
+    }
+   }
+  ],
+  "full": {
+   "webp": {
+    "path": "assets/img/guests/gosti-zhivopis-gory-1096.webp",
+    "bytes": 111692,
+    "w": 1096,
+    "h": 1461
+   },
+   "avif": {
+    "path": "assets/img/guests/gosti-zhivopis-gory-1096.avif",
+    "bytes": 57622,
+    "w": 1096,
+    "h": 1461
+   }
+  }
+ },
+ "assets/about/entrance.jpg": {
+  "source": "assets/about/entrance.jpg",
+  "natural": [
+   960,
+   1280
+  ],
+  "css_max": 1120,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/about/entrance-724.webp",
+     "bytes": 87914,
+     "w": 724,
+     "h": 965
+    },
+    "avif": {
+     "path": "assets/img/about/entrance-724.avif",
+     "bytes": 38877,
+     "w": 724,
+     "h": 965
+    }
+   },
+   {
+    "webp": {
+     "path": "assets/img/about/entrance-960.webp",
+     "bytes": 141438,
+     "w": 960,
+     "h": 1280
+    },
+    "avif": {
+     "path": "assets/img/about/entrance-960.avif",
+     "bytes": 68306,
+     "w": 960,
+     "h": 1280
+    }
+   }
+  ]
+ },
+ "assets/about/facade-evening.jpg": {
+  "source": "assets/about/facade-evening.jpg",
+  "natural": [
+   960,
+   1280
+  ],
+  "css_max": 547,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/about/facade-evening-724.webp",
+     "bytes": 33466,
+     "w": 724,
+     "h": 965
+    },
+    "avif": {
+     "path": "assets/img/about/facade-evening-724.avif",
+     "bytes": 17286,
+     "w": 724,
+     "h": 965
+    }
+   },
+   {
+    "webp": {
+     "path": "assets/img/about/facade-evening-960.webp",
+     "bytes": 53832,
+     "w": 960,
+     "h": 1280
+    },
+    "avif": {
+     "path": "assets/img/about/facade-evening-960.avif",
+     "bytes": 29556,
+     "w": 960,
+     "h": 1280
+    }
+   }
+  ]
+ },
+ "assets/about/sign-interior.jpg": {
+  "source": "assets/about/sign-interior.jpg",
+  "natural": [
+   1280,
+   960
+  ],
+  "css_max": 547,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/about/sign-interior-724.webp",
+     "bytes": 40302,
+     "w": 724,
+     "h": 543
+    },
+    "avif": {
+     "path": "assets/img/about/sign-interior-724.avif",
+     "bytes": 20745,
+     "w": 724,
+     "h": 543
+    }
+   },
+   {
+    "webp": {
+     "path": "assets/img/about/sign-interior-1094.webp",
+     "bytes": 82090,
+     "w": 1094,
+     "h": 820
+    },
+    "avif": {
+     "path": "assets/img/about/sign-interior-1094.avif",
+     "bytes": 41889,
+     "w": 1094,
+     "h": 820
+    }
+   }
+  ]
+ },
+ "assets/about/mirror-logo.jpg": {
+  "source": "assets/about/mirror-logo.jpg",
+  "natural": [
+   960,
+   1280
+  ],
+  "css_max": 547,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/about/mirror-logo-724.webp",
+     "bytes": 62222,
+     "w": 724,
+     "h": 965
+    },
+    "avif": {
+     "path": "assets/img/about/mirror-logo-724.avif",
+     "bytes": 30781,
+     "w": 724,
+     "h": 965
+    }
+   },
+   {
+    "webp": {
+     "path": "assets/img/about/mirror-logo-960.webp",
+     "bytes": 101866,
+     "w": 960,
+     "h": 1280
+    },
+    "avif": {
+     "path": "assets/img/about/mirror-logo-960.avif",
+     "bytes": 56715,
+     "w": 960,
+     "h": 1280
+    }
+   }
+  ]
+ },
+ "assets/about/mirror-chair.jpg": {
+  "source": "assets/about/mirror-chair.jpg",
+  "natural": [
+   960,
+   1280
+  ],
+  "css_max": 547,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/about/mirror-chair-724.webp",
+     "bytes": 45274,
+     "w": 724,
+     "h": 965
+    },
+    "avif": {
+     "path": "assets/img/about/mirror-chair-724.avif",
+     "bytes": 24228,
+     "w": 724,
+     "h": 965
+    }
+   },
+   {
+    "webp": {
+     "path": "assets/img/about/mirror-chair-960.webp",
+     "bytes": 72808,
+     "w": 960,
+     "h": 1280
+    },
+    "avif": {
+     "path": "assets/img/about/mirror-chair-960.avif",
+     "bytes": 40477,
+     "w": 960,
+     "h": 1280
+    }
+   }
+  ]
+ },
+ "assets/gift-certificate-original.jpg": {
+  "source": "assets/gift-certificate-original.jpg",
+  "natural": [
+   1536,
+   2048
+  ],
+  "css_max": 460,
+  "css_mobile": 362,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/cert/gift-certificate-original-724.webp",
+     "bytes": 39092,
+     "w": 724,
+     "h": 965
+    },
+    "avif": {
+     "path": "assets/img/cert/gift-certificate-original-724.avif",
+     "bytes": 22531,
+     "w": 724,
+     "h": 965
+    }
+   },
+   {
+    "webp": {
+     "path": "assets/img/cert/gift-certificate-original-920.webp",
+     "bytes": 52458,
+     "w": 920,
+     "h": 1227
+    },
+    "avif": {
+     "path": "assets/img/cert/gift-certificate-original-920.avif",
+     "bytes": 30364,
+     "w": 920,
+     "h": 1227
+    }
+   }
+  ]
+ },
+ "assets/logo-original-crop.jpg": {
+  "source": "assets/logo-original-crop.jpg",
+  "natural": [
+   403,
+   474
+  ],
+  "css_max": 245,
+  "css_mobile": 176,
+  "grid": [
+   {
+    "webp": {
+     "path": "assets/img/logo/logo-original-crop-403.webp",
+     "bytes": 10786,
+     "w": 403,
+     "h": 474
+    },
+    "avif": {
+     "path": "assets/img/logo/logo-original-crop-403.avif",
+     "bytes": 6461,
+     "w": 403,
+     "h": 474
+    }
+   }
+  ]
+ }
+}
