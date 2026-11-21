@@ -22,10 +22,11 @@ import json
 import os
 import sys
 from io import BytesIO
+from pathlib import Path
 
 from PIL import Image, ImageCms, ImageOps
 
-ROOT = "/home/sp/projects/uyut"
+ROOT = str(Path(__file__).resolve().parents[1])
 OUT = "assets/img"
 WEBP_Q, WEBP_M, AVIF_Q = 78, 6, 45
 

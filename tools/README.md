@@ -10,11 +10,12 @@
 
 ```bash
 python3 tools/build-adapted-images.py    # перекодирует assets/img/*, пишет images.js
-python3 tools/wire-adapted-images.py     # переставляет <picture> в index.html
+python3 tools/build-catalog.py           # карточки из workshops.json + сам вызывает wire
 ```
 
-`wire-adapted-images.py` идемпотентен: повторный запуск не удваивает обёртки, он снимает
-прежнюю по маркеру `<!--@adapted …-->` и ставит новую. Проверено двойным прогоном с `diff`.
+`build-catalog.py` обязателен: он рендерит 21 статическую карточку и `assets/js/catalog.js`
+из `assets/data/workshops.json`, а затем сам запускает `wire-adapted-images.py`, чтобы
+карточки получили `<picture>`. Отдельный `wire` после него не нужен.
 
 Если меняется только карта вариантов (например, поправили quality), а HTML трогать не нужно:
 
@@ -31,6 +32,9 @@ python3 tools/build-adapted-images.py --emit-only
 2. Поднять `?v=` у `styles.css`, `main.js`, `images.js` в `index.html`: на них
    `Cache-Control: immutable, max-age=31536000`, без bump посетители с тёплым кэшем будут
    видеть старые файлы.
+3. Тексты, цены и порядок мастер-классов — только в `assets/data/workshops.json`, затем
+   `python3 tools/build-catalog.py`. Карточки в `index.html` и `assets/js/catalog.js` —
+   автогенерат; ручная правка затрётся.
 
 ## Почему сделано именно так
 

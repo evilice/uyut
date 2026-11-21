@@ -104,10 +104,15 @@ export async function withBrowser(fn, opts = {}) {
     if (waitReady) {
       // Ждём готовности сайта, а не фиксированного таймаута: иначе клики
       // уходят до навешивания обработчиков и тест даёт ложную регрессию.
+      let ready = false;
       for (let i = 0; i < 40; i++) {
-        const ready = await evaluate(`(typeof openForm === 'function' && document.querySelectorAll('#cards .work-card').length > 0)`).catch(() => false);
+        ready = await evaluate(`(typeof openForm === 'function' && document.querySelectorAll('#cards .work-card').length > 0)`).catch(() => false);
         if (ready) break;
         await sleep(250);
+      }
+      if (!ready) {
+        const state = await evaluate(`({url:location.href,readyState:document.readyState,cards:document.querySelectorAll('#cards .work-card').length})`).catch(() => ({}));
+        throw new Error('страница не инициализировалась: ' + JSON.stringify(state));
       }
     } else {
       await sleep(500);

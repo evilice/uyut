@@ -11,8 +11,9 @@
 """
 import json
 import re
+from pathlib import Path
 
-ROOT = "/home/sp/projects/uyut"
+ROOT = str(Path(__file__).resolve().parents[1])
 
 # sizes = измеренные css-ширины бокса по диапазонам вьюпорта (per-image.mjs @1920/1280/760/390)
 SIZES = {

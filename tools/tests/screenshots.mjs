@@ -52,6 +52,13 @@ const out = await withBrowser(async ({ call, evaluate, sleep }) => {
   }
   if (pending !== 0) throw new Error(`картинки не загрузились: ${pending}`);
 
+  // decode() гарантирует, что картинки готовы к отрисовке в полностраничном
+  // снимке: иначе Chromium иногда оставляет дальние от вьюпорта кадры пустыми.
+  await evaluate(`Promise.all([...document.images]
+    .filter(i => i.getAttribute('src') || i.getAttribute('srcset'))
+    .map(i => i.decode().catch(() => {})))`);
+  await evaluate(`new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); 'ok'`);
+
   await evaluate(`(()=>{
     const s=document.createElement('style');
     s.textContent='*,*::before,*::after{transition:none!important;animation:none!important}.reveal{opacity:1!important;transform:none!important}';
