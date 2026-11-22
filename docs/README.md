@@ -101,6 +101,16 @@
 (`git@github.com:evilice/uyut.git`). `git checkout -- <файл>` работает, `git status`
 чистый. Push — только по явной просьбе.
 
+### 4. Favicon (первая часть пункта 4)
+
+Собран из того же логотипа генератором `tools/build-favicon.py`: `favicon.ico`
+(кадры 16/32/48), `favicon-32.png` и `apple-touch-icon.png` 180×180 — вместе 16.5 КБ.
+Внутри — монограмма «У» на фоне логотипа, потому что полный знак 403×474 с подписью
+и ветками в 16–32 px превращается в пятно. Ссылки на иконки добавлены в `<head>`
+`index.html`; юридические страницы в корне получают `/favicon.ico` по умолчанию.
+Остальное из пункта 4 (`robots.txt`, `sitemap.xml`, `canonical`, `og:`, JSON-LD)
+по-прежнему ждёт реальный домен.
+
 ## Текущие размеры
 
 | Файл | Размер |
@@ -117,7 +127,7 @@
 | Пункт | Файл | Суть |
 |---|---|---|
 | 0 | [`00-mail-not-configured.md`](00-mail-not-configured.md) | **Заявки не отправляются** — `sender` остался заглушкой. Баг, а не улучшение |
-| 4 | [`04-seo-and-structured-data.md`](04-seo-and-structured-data.md) | Нет favicon/robots/sitemap/`canonical`/`og:`/JSON-LD |
+| 4 | [`04-seo-and-structured-data.md`](04-seo-and-structured-data.md) | Favicon сделан; нет robots/sitemap/`canonical`/`og:`/JSON-LD (нужен домен) |
 | 6 | [`06-js-cleanup.md`](06-js-cleanup.md) | Мёртвая переменная, недостижимая ветка ответа, два мёртвых поля формы |
 | 7 | [`07-css-conflicts.md`](07-css-conflicts.md) | Два измеренных дефекта (немонотонная ширина `.wrap` на 380px; мёртвое правило `.brand-logo` 126×54) + 10 блоков `@media` на 4 брейкпоинта и порядок-зависимость |
 
@@ -126,6 +136,8 @@
 1. **После любых новых фото** — `python3 tools/build-adapted-images.py`, затем
    `python3 tools/build-catalog.py` (он сам вызывает `wire-adapted-images.py`).
    Цепочка `build-adapted → wire` без `build-catalog` оставит карточки без `<picture>`.
+   **После замены логотипа** дополнительно `python3 tools/build-favicon.py` — иначе
+   иконки останутся от прежнего знака.
 2. **После любой правки `workshops.json`** — `python3 tools/build-catalog.py`.
    Карточки и `catalog.js` генерируются из JSON; ручная правка `index.html` затрётся.
    Версия `catalog.js?v=<sha1>` обновляется генератором сама.

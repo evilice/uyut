@@ -36,6 +36,22 @@ python3 tools/build-adapted-images.py --emit-only
    `python3 tools/build-catalog.py`. Карточки в `index.html` и `assets/js/catalog.js` —
    автогенерат; ручная правка затрётся.
 
+## Иконки сайта (favicon)
+
+```bash
+python3 tools/build-favicon.py    # favicon.ico, favicon-32.png, apple-touch-icon.png
+```
+
+Запускать только после замены логотипа `assets/logo-original-crop.jpg` — исходник скрипт
+не меняет. Из логотипа берётся буква «У» (`GLYPH_BOX`), фон и золото — замеренные цвета
+бренда; полный знак в 16–32 px нечитаем. Скрипт сам ничего не подключает: `<link>` живут
+в `<head>` `index.html` и правятся руками только при смене набора файлов.
+
+Файлы лежат в корне с постоянными именами и кэшируются на 30 дней (`Cache-Control`
+из `.htaccess` перекрывает годовой `Expires` для `image/x-icon`). Поэтому после замены
+знака старую иконку посетители с тёплым кэшем могут видеть до месяца: либо поднять
+`?v=` в трёх `<link>`, либо дать файлам новые имена.
+
 ## Почему сделано именно так
 
 - **AVIF + WebP, без JPEG-фолбэка.** Сайт уже требует `<dialog>` (Safari 15.4+ / Chrome 105+),
