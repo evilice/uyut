@@ -1,5 +1,4 @@
 const workshops = window.WORKSHOPS || [];
-const regularPaintingImage = (workshops.find(w => w.title === 'Регулярные занятия по живописи') || workshops.find(w => w.category === 'painting') || {}).image || '';
 // Адаптивные картинки из assets/img/* (генерит tools/build-adapted-images.py).
 // Если пути нет в карте IMG_VARIANTS — отдаём исходник: деградация до «как было», а не битая картинка.
 const IMG_SIZES_DETAIL = "(min-width:701px) 820px, calc(100vw - 40px)";
@@ -58,8 +57,9 @@ form.addEventListener('submit', async e=>{
   let result={};try{result=await response.json();}catch(_){}
   if(!response.ok||result.success!==true)throw new Error('Сервис не подтвердил отправку');
   form.classList.add('hidden');
-  if(result.stored){success.querySelector('h3').textContent='Заявка сохранена';success.querySelector('p').textContent='Почтовый сервис сейчас недоступен. Заявка сохранена на сервере, но письмо не отправлено. Пожалуйста, свяжитесь с мастерской по телефону.';success.querySelector('span').textContent='!';}
-  else{success.querySelector('h3').textContent='Заявка отправлена';success.querySelector('p').textContent='Сайт передал вашу заявку почтовой системе. Мы свяжемся с вами по указанным контактам.';success.querySelector('span').textContent='✓';}
+  success.querySelector('h3').textContent='Заявка отправлена';
+  success.querySelector('p').textContent='Сайт передал вашу заявку почтовой системе. Мы свяжемся с вами по указанным контактам.';
+  success.querySelector('span').textContent='✓';
   success.classList.remove('hidden');
  }catch(err){submit.disabled=false;submit.innerHTML='Повторить отправку <b>↻</b>';let warning=form.querySelector('.send-error');if(!warning){warning=document.createElement('p');warning.className='send-error';warning.setAttribute('role','alert');warning.style.cssText='color:#9b3e2b;font-size:12px;line-height:1.5;margin:8px 0';submit.insertAdjacentElement('beforebegin',warning);}warning.textContent='Заявка не отправлена. Проверьте подключение и попробуйте ещё раз. Если ошибка повторится, свяжитесь с мастерской по телефону.';}
 });
