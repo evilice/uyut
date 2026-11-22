@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://uyutengels.ru/sitemap.xml

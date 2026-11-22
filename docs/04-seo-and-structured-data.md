@@ -1,73 +1,74 @@
 # 4. SEO-разметка, превью в мессенджерах и структурированные данные
 
-**Статус:** частично сделано (favicon, 22.11.2026) · **Зависит от:** реальный домен
-(нужен владельцу) · **Риск:** низкий
+**Статус:** сделано 22.11.2026 · **Домен:** `https://uyutengels.ru/` ·
+**Осталось:** данные владельца для `openingHours` / `geo` / `aggregateRating` ·
+**Риск:** низкий
 
-## Постановка
+## Домен
 
-По проверке `index.html` отсутствуют все вещи, которые определяют, как страницу видят
-поисковик и мессенджер (числа — результат grep по текущему файлу):
+`https://uyutengels.ru/` — проверено: HTTPS отдаёт 200, `http://` → `https://` 301.
+`https://www.uyutengels.ru/` тоже отвечает 200 **без редиректа**, то есть это дубль
+хоста; `canonical` на всех страницах указывает на вариант без `www`. Редирект
+`www → без www` не добавлен: это настройка панели/nginx, `.htaccess` в этой задаче
+не правился.
 
-| Что | Сейчас |
+## Что сделано
+
+| Что | Результат |
 |---|---|
-| `rel="canonical"` | 0 |
-| `og:` / Twitter Card | 0 |
-| `theme-color` | 0 |
-| JSON-LD (`application/ld+json`) | 0 |
-| `favicon.ico` / иконки | **сделано**: `favicon.ico` 16/32/48, `favicon-32.png`, `apple-touch-icon.png` |
-| `robots.txt` | нет файла |
-| `sitemap.xml` | нет файла |
+| `rel="canonical"` | главная → `https://uyutengels.ru/`; три юридические страницы — свои URL |
+| `og:` | `type`, `locale`, `site_name`, `title`, `description`, `url`, `image` (+ `width`/`height`/`alt`) |
+| Twitter Card | `summary_large_image` + `title` / `description` / `image` |
+| `theme-color` | `#003d31` (`--green` из `styles.css`) |
+| JSON-LD | `LocalBusiness`: `name`, `description`, `url`, `image`, `telephone`, `PostalAddress`, `sameAs` ×4 |
+| `favicon.ico` / иконки | `favicon.ico` 16/32/48, `favicon-32.png`, `apple-touch-icon.png` 180×180 |
+| `robots.txt` | `User-agent: *`, пустой `Disallow:`, `Sitemap: https://uyutengels.ru/sitemap.xml` |
+| `sitemap.xml` | 4 URL: главная + `privacy.html`, `consent.html`, `user-agreement.html` |
 
-Последствия прямые:
+**`og:image`** — `assets/img/og/og-1200x630.jpg` (1200×630, 133 КБ, JPEG q88),
+генерируется `tools/build-og-image.py` из `assets/workshop-facade.jpg`. На фотографии
+уже есть вывеска с названием и перечнем услуг, поэтому текст поверх не рисовался;
+кроп 960×504 от `y=110`, апскейл 1.25×. Это отдельный файл, а не адаптивная картинка:
+мессенджеры не читают `srcset`.
 
-1. **Ссылка в WhatsApp/Telegram/VK разворачивается без картинки и заголовка.** Для
-   мастерской, которая живёт сарафаном и соцсетями, это основной канал входящих.
-2. ~~Каждый визит делает запрос `/favicon.ico` → **404**.~~ Исправлено.
-3. Локальный бизнес не получает rich-результат в Яндексе/Google, хотя все данные
-   (адрес, телефон, соцсети, рейтинг) в разметке уже есть — они просто не размечены.
+**JSON-LD** содержит только то, что уже есть в разметке. `openingHours`, `geo` и
+`aggregateRating` не добавлены: их значений в HTML нет (часы работы и рейтинг —
+вопрос владельцу, координаты — из Яндекс.Карт), а выдуманные данные поисковик штрафует.
+`sameAs` — Telegram, VK, Instagram, MAX. Ссылка `vk.ru/cosiness64` проверена: отвечает
+200, это рабочий домен VK, а не опечатка вместо `vk.com`.
 
-## Блокирующая зависимость
+## Замеры
 
-**Реального домена нет нигде в проекте.** В `index.html` есть только внешние ссылки
-(`t.me/uyut64`, `vk.ru/cosiness64`, `max.ru/…`, `instagram.com/uyt_engels`, ссылка
-на Яндекс.Карты) и шрифты Google. `canonical`, `og:url` и `sitemap.xml` без домена
-незаполнимы — это первый вопрос владельцу.
+| Проверка | Результат |
+|---|---|
+| `index.html` | 68 093 Б raw / 13 734 Б gzip (было 63.7 / 12.8 КБ) |
+| `robots.txt` / `sitemap.xml` | 68 Б / 509 Б, локально 200, `text/plain` / `application/xml` |
+| `og-1200x630.jpg` | 133.3 КБ, 1200×630 |
+| JSON-LD | парсится как JSON, `@type: LocalBusiness`, 4 ссылки в `sameAs` |
+| `sitemap.xml` | well-formed XML, 4 `<loc>` |
+| локальная отдача | favicon / robots / sitemap / og-картинка — все 200 |
+| повторный `build-catalog.py` | `index.html` не меняется (шапка генератором не затрагивается) |
 
-## План реализации
+## После заливки на хостинг
 
-1. **Уточнить домен** (и факт HTTPS-редиректа, который включается в панели REG.RU).
-2. ~~**`favicon`**~~ — **сделано 22.11.2026**, см. «Результат: favicon» ниже.
-3. **`robots.txt`**: `User-agent: *`, `Disallow:` (пустой), `Sitemap: https://домен/sitemap.xml`.
-   ⚠️ Проверено: правило `.txt` в `.htaccess` НЕ блокирует — иначе `robots.txt` вернул бы 403.
-   После заливки перепроверить `curl -s -o /dev/null -w '%{http_code}' .../robots.txt` = 200.
-4. **`sitemap.xml`**: одна страница + юридические (`privacy.html`, `consent.html`,
-   `user-agreement.html`). Отдать `Content-Type: application/xml` (при необходимости AddType).
-5. **`canonical` + OG/Twitter** в `<head>`:
-   - `og:title` = `<title>`, `og:description` = существующий `<meta name="description">`
-   - `og:type=website`, `og:locale=ru_RU`, `og:url` = canonical
-   - **`og:image`** — отдельный файл ~1200×630, а не адаптивная картинка: мессенджеры
-     не читают `srcset`. Генерить тем же конвейером (`tools/build-adapted-images.py`),
-     группой `og`, ~100–150 КБ, и держать в секрете от lazy-загрузки.
-6. **JSON-LD `LocalBusiness`** (он же `EducationalOrganization`/`LocalBusiness` — выбрать
-   тип). Данные, которые уже есть в разметке и переносятся как есть:
-   - адрес: `Энгельс, ул. Маяковского, 47а`
-   - телефон: `+7 908 540-38-88` (`tel:+79085403888`)
-   - `sameAs`: Telegram, VK, Instagram, MAX-ссылка
-   - `aggregateRating` — есть виджет рейтинга Яндекса, но **цифры рейтинга в разметке
-     отсутствуют** (они внутри iframe) → значение нужно взять у владельца, не выдумывать.
-7. **Чего в разметке нет и нельзя вставить «из головы»:**
-   - `openingHours` — часов работы в HTML нет вовсе → спросить владельца;
-   - `geo` (`latitude`/`longitude`) — координат нет, ссылка на карты текстовая
-     (`yandex.ru/maps/?text=Энгельс%20Маяковского%2047а`) → взять из Яндекс.Карт;
-   - в `sameAs` стоит `https://vk.ru/cosiness64` — домен `vk.ru` выглядит опечаткой
-     вместо `vk.com`; **проверить перед разметкой**, иначе `sameAs` будет битым.
+На момент проверки (22.11.2026) прод отдаёт `index.html` от 17.10 (103 КБ), а
+`/favicon.ico`, `/robots.txt`, `/sitemap.xml` — 404, то есть изменения ещё не загружены.
+Чек-лист:
 
-## Критерии приёмки
+1. `curl -s https://uyutengels.ru/ | grep -c 'og:image'` ≥ 1;
+   `curl -I` на `favicon.ico`, `robots.txt`, `sitemap.xml`, `assets/img/og/og-1200x630.jpg` = 200.
+2. Превью — реальной отправкой в Telegram (`@WebpageBot` сбрасывает кэш), WhatsApp, VK.
+   Telegram кэширует по URL: при замене картинки менять имя файла, а не содержимое.
+3. `validator.schema.org` на URL → `LocalBusiness` без ошибок.
+4. Яндекс.Webmaster и Google Search Console: принять `sitemap.xml`, убедиться, что
+   404 на `/favicon.ico` исчез из логов.
 
-- `curl -s https://домен/ | grep -c 'og:image'` ≥ 1, `curl -I` на favicon/robots/sitemap = 200.
-- Валидатор schema.org (validator.schema.org) на URL → `LocalBusiness` без ошибок.
-- Превью ссылки: проверить реальной отправкой в Telegram и WhatsApp (картинка + заголовок).
-- Яндекс.Webmaster / Google Search Console: sitemap принят, favicon 404 исчез из логов.
+## Что осталось (вопросы владельцу)
+
+- `openingHours` — часов работы в HTML нет;
+- `geo` (`latitude`/`longitude`) — взять из Яндекс.Карт;
+- `aggregateRating` — цифры рейтинга живут внутри iframe виджета, в разметке их нет;
+- по желанию: редирект `www → без www` в панели.
 
 ## Результат: favicon (22.11.2026)
 
@@ -85,20 +86,16 @@
 
 В `<head>` `index.html` добавлены три `<link>`; юридические страницы лежат в корне
 и получают тот же `favicon.ico` без правок. Кэш из `.htaccess`: `image/x-icon` — год
-по `Expires`, но `Cache-Control` из `FilesMatch` даёт всем иконкам 30 дней. Проверка:
-локальная отдача всех трёх файлов — 200, `Content-Type` корректный; при заливке
-повторить `curl -I`.
+по `Expires`, но `Cache-Control` из `FilesMatch` даёт всем иконкам 30 дней. При замене
+знака поднять `?v=` в трёх `<link>` или дать файлам новые имена — иначе старая иконка
+живёт в кэше до месяца.
 
 Сменить мотив (полный знак, ветка, другой кроп) — правка `tools/build-favicon.py`;
 ссылки в `<head>` от этого не зависят.
 
 ## Риски
 
-Низкие: правки аддитивные. Единственный содержательный риск — разметить несуществующие
-`openingHours`/`rating` (штрафуется поисковиком), поэтому они вынесены в отдельный
-вопрос владельцу.
-
-## Объём
-
-`<head>` + 4 файла + JSON-LD-блок. Половина работы ждёт ответа владельца (домен, часы,
-рейтинг, координаты, VK-домен).
+Низкие: правки аддитивные и проверены локально. Содержательный риск только один —
+разметить несуществующие `openingHours`/`rating`, поэтому они не добавлены до ответа
+владельца. Отдельно: превью в мессенджерах кэшируется, после замены `og:image`
+нужен сброс кэша (`@WebpageBot`) или новое имя файла.
