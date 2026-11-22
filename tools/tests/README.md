@@ -19,6 +19,22 @@ CASE=blocked node tools/tests/test-catalog.mjs   # catalog.js заблокиро
 node tools/tests/test-nojs.mjs          # JS полностью отключён
 ```
 
+## Матрица стилей (пункт 7)
+
+Сравнение CSS «до/после» по вычисленным стилям всех элементов на 41 ширине —
+ловит изменения каскада, которые не проявятся на четырёх скриншотах:
+
+```bash
+node tools/tests/css-matrix.mjs save /tmp/css-before.json
+# ...правка styles.css...
+node tools/tests/css-matrix.mjs save /tmp/css-after.json
+node tools/tests/css-matrix.mjs compare /tmp/css-before.json /tmp/css-after.json
+```
+
+Два прогона одной версии обязаны дать 0 расхождений, иначе шум (шрифты, ленивые
+картинки) — тогда сравнение ничего не доказывает. Ширины включают ±1px вокруг всех
+брейкпоинтов (360/380/650/700/900/1050).
+
 `CDP_URL` переопределяет адрес (по умолчанию `http://127.0.0.1:8899/index.html`),
 `CHROME` — путь к Chromium (по умолчанию `/snap/bin/chromium`).
 
