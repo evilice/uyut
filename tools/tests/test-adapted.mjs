@@ -13,7 +13,7 @@ const out = await withBrowser(async ({ evaluate, sleep }) => {
 
   await step('фильтр по видимым карточкам', `(()=>{
     const all=document.querySelectorAll('#cards .work-card').length;
-    const kidsExpected=window.WORKSHOPS.filter(w=>w.category==='kids').length;
+    const kidsExpected=window.WORKSHOPS.filter(w=>(w.categories||[w.category]).includes('kids')).length;
     const visible=()=>[...document.querySelectorAll('#cards .work-card')].filter(c=>getComputedStyle(c).display!=='none');
     document.querySelector('#filters [data-filter="kids"]').click();
     const afterKids={cards:visible().length,pictures:[...document.querySelectorAll('#cards picture')].filter(p=>getComputedStyle(p.closest('.work-card')).display!=='none').length};
@@ -22,11 +22,11 @@ const out = await withBrowser(async ({ evaluate, sleep }) => {
   })()`);
 
   await step('модалка описания', `(()=>{document.querySelector('#cards .detail').click();const d=document.getElementById('detailModal');const i=d.querySelector('.detail-visual img');const r=i.getBoundingClientRect();return {open:d.open,hasPicture:!!d.querySelector('.detail-visual picture'),avif:(i.currentSrc||'').split('.').pop(),box:Math.round(r.width)+'x'+Math.round(r.height),natural:i.naturalWidth+'x'+i.naturalHeight,lock:document.body.classList.contains('lock')}})()`, 500);
-  await step('описание закрыто', `(()=>{document.querySelector('#detailModal [data-detail-close]').click();return {open:document.getElementById('detailModal').open,lock:document.body.classList.contains('lock')}})()`, 500);
+  await step('описание закрыто', `(async()=>{document.querySelector('#detailModal [data-detail-close]').click();await new Promise(r=>setTimeout(r,350));return {open:document.getElementById('detailModal').open,lock:document.body.classList.contains('lock')}})()`, 100);
 
   await step('лайтбокс берёт full', `(()=>{const g=document.querySelector('.guest-photo');g.click();const lb=document.getElementById('guestLightbox');const i=document.getElementById('guestLightboxImage');const r=i.getBoundingClientRect();return {open:lb.open,src:i.src.split('/').pop(),natural:i.naturalWidth+'x'+i.naturalHeight,box:Math.round(r.width)+'x'+Math.round(r.height),lock:document.body.classList.contains('lock')}})()`, 500);
   await step('лайтбокс: следующая', `(()=>{document.getElementById('guestNext').click();return document.getElementById('guestLightboxImage').src.split('/').pop()})()`);
-  await step('лайтбокс закрыт', `(()=>{document.getElementById('guestLightboxClose').click();return {open:document.getElementById('guestLightbox').open,lock:document.body.classList.contains('lock')}})()`, 500);
+  await step('лайтбокс закрыт', `(async()=>{document.getElementById('guestLightboxClose').click();await new Promise(r=>setTimeout(r,350));return {open:document.getElementById('guestLightbox').open,lock:document.body.classList.contains('lock')}})()`, 100);
 
   await step('нет 404-картинок', `[...document.images].filter(i=>i.complete && i.naturalWidth===0).map(i=>(i.currentSrc||i.src).split('/').pop())`);
   await step('итог CLS', `({cls:+(window.__cls||0).toFixed(5), shifts:(window.__sh||[]).slice(0,6)})`);

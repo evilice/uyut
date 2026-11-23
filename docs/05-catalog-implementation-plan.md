@@ -392,7 +392,7 @@ withBrowser(fn, { scriptDisabled = false, waitReady = true, beforeNavigate = nul
 
 ### 8.4 Baseline-скриншоты
 
-`tools/tests/screenshots.mjs`: ширины 1920/1280/760/390, полная страница
+`tools/tests/screenshots.mjs`: ширины 1920/1280/768/390, полная страница
 (`captureBeyondViewport`, clip по `Page.getLayoutMetrics`), reduced-motion, инъекция
 отключения transition/animation и `.reveal{opacity:1!important;transform:none!important}`.
 

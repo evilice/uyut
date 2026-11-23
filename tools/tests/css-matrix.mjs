@@ -11,9 +11,9 @@
 // одной версии обязаны дать 0 — иначе сравнивать нечего.
 import { readFileSync, writeFileSync } from 'node:fs';
 
-const WIDTHS = [280, 300, 320, 340, 359, 360, 361, 375, 379, 380, 381, 390, 400, 420, 480,
-  500, 600, 640, 649, 650, 651, 660, 699, 700, 701, 720, 760, 800, 899, 900, 901, 960,
-  1049, 1050, 1051, 1100, 1280, 1366, 1440, 1600, 1920];
+const WIDTHS = [280, 300, 320, 340, 359, 360, 361, 375, 379, 380, 381, 390, 400, 414, 420, 480,
+  500, 600, 640, 649, 650, 651, 660, 699, 700, 701, 720, 760, 768, 800, 899, 900, 901, 960,
+  1024, 1049, 1050, 1051, 1100, 1280, 1366, 1440, 1600, 1920];
 const PROPS = ['display', 'position', 'width', 'height', 'min-width', 'min-height', 'max-width',
   'max-height', 'margin-top', 'margin-right', 'margin-bottom', 'margin-left', 'padding-top',
   'padding-right', 'padding-bottom', 'padding-left', 'font-family', 'font-size', 'font-weight',

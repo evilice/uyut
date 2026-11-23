@@ -46,22 +46,24 @@ def price_text(value):
     return f"{value:,}".replace(",", "\u00a0") + " ₽"
 
 
-def card_html(w, index, category_label):
+def card_html(w, index, category_label, categories):
     i = str(index)
+    cat_list = " ".join(categories)
+    title = w["title"]
     return (
-        f'<article class="work-card" data-category="{esc(w["category"])}">'
+        f'<article class="work-card" data-category="{esc(cat_list)}">'
         '<div class="work-visual">'
-        f'<img src="{esc(w["image"])}" alt="{esc(w["title"])}" loading="lazy" decoding="async"/>'
+        f'<img src="{esc(w["image"])}" alt="{esc(title)}" loading="lazy" decoding="async"/>'
         f'<span class="work-tag">{esc(category_label)}</span></div>'
         '<div class="work-body">'
-        f'<h3>{esc(w["title"])}</h3>'
-        f'<div class="meta"><span>{esc(w["age"])}</span><span>·</span><span>{esc(w["duration"])}</span></div>'
+        f'<h3>{esc(title)}</h3>'
+        f'<div class="meta"><span>{esc(w["age"])}</span><span aria-hidden="true">·</span><span>{esc(w["duration"])}</span></div>'
         f'<p>{esc(w["description"])}</p>'
         '<div class="work-bottom">'
         f'<span class="price">{price_text(w["price"])}</span>'
         '<div class="card-actions">'
-        f'<button class="mini-btn detail" data-i="{i}">Подробнее</button>'
-        f'<button class="mini-btn primary book" data-i="{i}">Записаться</button>'
+        f'<button type="button" class="mini-btn detail" data-i="{i}" aria-label="Подробнее: {esc(title)}">Подробнее</button>'
+        f'<button type="button" class="mini-btn primary book" data-i="{i}" aria-label="Записаться: {esc(title)}">Записаться</button>'
         '</div></div></div></article>'
     )
 
@@ -85,6 +87,11 @@ def validate(data, manifest):
             fail(f"запись {n}: нет полей {missing}")
         if w["category"] not in categories:
             fail(f"запись {n}: неизвестная категория {w['category']!r}")
+        cats = w.get("categories", [w["category"]])
+        if not isinstance(cats, list) or not cats or not all(c in categories for c in cats):
+            fail(f"запись {n}: categories должен быть непустым массивом известных категорий")
+        if w["category"] not in cats:
+            fail(f"запись {n}: categories должен содержать основной category")
         if not isinstance(w["price"], int) or w["price"] < 0:
             fail(f"запись {n}: price должен быть целым >= 0")
         if not isinstance(w["steps"], list) or not w["steps"] or not all(isinstance(s, str) and s for s in w["steps"]):
@@ -113,7 +120,10 @@ def main():
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     workshops, categories = validate(data, manifest)
 
-    cards = "\n".join(card_html(w, i, categories[w["category"]]) for i, w in enumerate(workshops))
+    cards = "\n".join(
+        card_html(w, i, categories[(w.get("categories") or [w["category"]])[0]], w.get("categories") or [w["category"]])
+        for i, w in enumerate(workshops)
+    )
 
     source = INDEX.read_text(encoding="utf-8")
     snapshot = source

@@ -85,7 +85,8 @@ $fields = [
 ];
 
 $modeFields = [
-    'booking' => ['name', 'phone', 'email', 'date'],
+    // В форме e-mail, дата и число участников необязательны (CNT-08); сервер проверяет только имя и телефон.
+    'booking' => ['name', 'phone'],
     'event' => ['eventName', 'eventPhone'],
     'certificate' => ['certName', 'certPhone'],
 ];

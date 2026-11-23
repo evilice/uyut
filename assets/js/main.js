@@ -11,12 +11,25 @@ function adaptedPicture(src, alt, sizes, eager){
   `<img src="${v.webp[0]}" alt="${alt}" srcset="${ss(v.webp)}" sizes="${sizes}" width="${v.ratio[0]}" height="${v.ratio[1]}"${load} decoding="async"></picture>`;
 }
 const filters=document.getElementById('filters');
+const filterStatus=document.getElementById('filterStatus');
+const catalogEmpty=document.getElementById('catalogEmpty');
 filters?.addEventListener('click',e=>{
  const btn=e.target.closest('button[data-filter]');if(!btn)return;
- filters.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===btn));
- document.querySelectorAll('#cards .work-card').forEach(card=>{
-  card.classList.toggle('hidden',btn.dataset.filter!=='all'&&card.dataset.category!==btn.dataset.filter);
+ const cards=[...document.querySelectorAll('#cards .work-card')];
+ filters.querySelectorAll('button').forEach(x=>{
+  const active=x===btn;
+  x.classList.toggle('active',active);
+  x.setAttribute('aria-pressed',active?'true':'false');
  });
+ let shown=0;
+ cards.forEach(card=>{
+  const categories=(card.dataset.category||'').split(/\s+/);
+  const hide=btn.dataset.filter!=='all'&&!categories.includes(btn.dataset.filter);
+  card.classList.toggle('hidden',hide);
+  if(!hide) shown++;
+ });
+ if(filterStatus) filterStatus.textContent=`Показано ${shown} из ${cards.length}`;
+ catalogEmpty?.classList.toggle('hidden',shown!==0);
 });
 const modal=document.getElementById('modal'), form=document.getElementById('modalForm');
 function openForm(type,workshop=''){document.body.classList.add('lock');if(!modal.open)modal.showModal();focusDialog(modal);document.getElementById('formType').value=type;document.getElementById('workshopInput').value=workshop||'Помогите выбрать мастер-класс';const event=type==='event',cert=type==='certificate';document.getElementById('modalKicker').textContent=event?'Мероприятие':cert?'Подарочный сертификат':'Запись';document.getElementById('modalTitle').textContent=event?'Обсудить мероприятие':cert?'Купить сертификат':'Записаться';document.getElementById('modalDesc').textContent=event?'Расскажите, какой повод планируете, сколько будет гостей и где хотите провести мероприятие. Мы предложим подходящие мастер-классы и согласуем детали.':cert?'Мы свяжемся с вами, чтобы оформить сертификат и согласовать способ оплаты.':'Выбранное занятие уже указано в форме. Оставьте контакты — мы свяжемся с вами.';document.getElementById('bookingFields').classList.toggle('hidden',event||cert);document.getElementById('eventFields').classList.toggle('hidden',!event);document.getElementById('certFields').classList.toggle('hidden',!cert);document.getElementById('workshopField').classList.toggle('hidden',event||cert);form.classList.remove('hidden');document.getElementById('success').classList.add('hidden')}
@@ -27,12 +40,13 @@ function closeDetail(){if(detail.open)detail.close()}
 // Esc и showModal закрывают диалог сами, минуя наши функции. Блокировку прокрутки
 // пересчитываем по факту «открыт ли хоть один диалог», иначе переход
 // «описание -> запись» снимал бы lock, когда вторая модалка уже открыта.
-function syncScrollLock(){document.body.classList.toggle('lock',modal.open||detail.open)}
+function syncScrollLock(){const lightbox=document.getElementById('guestLightbox');document.body.classList.toggle('lock',modal.open||detail.open||!!lightbox?.open||mobile.classList.contains('open'))}
 // Браузер при showModal() ставит фокус на первый скроллируемый внутренний блок
 // (.modal-card), из-за чего скринридер не объявляет заголовок диалога.
 function focusDialog(d){(d.querySelector('[autofocus]')||d).focus({preventScroll:true})}
 [modal,detail].forEach(d=>d.addEventListener('close',syncScrollLock));
 document.addEventListener('click',e=>{
+ if(mobile.classList.contains('open')&&!mobile.contains(e.target)&&!burger.contains(e.target))setMenu(false,true);
  if(e.target.matches('[data-form]'))openForm(e.target.dataset.form);
  if(e.target.matches('[data-close]'))closeModal();
  if(e.target.matches('.book')){const w=workshops[+e.target.dataset.i];if(w)openForm('booking',w.title);}
@@ -45,7 +59,7 @@ const eventRequired = [...document.querySelectorAll('#eventFields input[name="ev
 const certRequired = [...document.querySelectorAll('#certFields input[name="certName"], #certFields input[name="certPhone"]')];
 function setModeRequired(mode){bookingRequired.forEach(el => el.required = mode === 'booking');eventRequired.forEach(el => el.required = mode === 'event');certRequired.forEach(el => el.required = mode === 'certificate');}
 const originalOpenForm = openForm;
-openForm = function(type, workshop=''){originalOpenForm(type, workshop);setModeRequired(type);form.classList.remove('hidden');document.getElementById('success').classList.add('hidden');const submit=document.getElementById('submitRequest');submit.disabled=false;submit.innerHTML='Отправить заявку <b>↗</b>';const warning=form.querySelector('.send-error');if(warning)warning.remove();};
+openForm = function(type, workshop=''){originalOpenForm(type, workshop);setModeRequired(type);form.classList.remove('hidden');document.getElementById('success').classList.add('hidden');form.querySelectorAll('[aria-invalid]').forEach(el=>el.removeAttribute('aria-invalid'));const submit=document.getElementById('submitRequest');submit.disabled=false;submit.innerHTML='Отправить заявку';const warning=form.querySelector('.send-error');if(warning)warning.remove();};
 form.addEventListener('submit', async e=>{
  e.preventDefault();if(!form.reportValidity())return;
  const submit=document.getElementById('submitRequest'), success=document.getElementById('success');
@@ -58,29 +72,18 @@ form.addEventListener('submit', async e=>{
   if(!response.ok||result.success!==true)throw new Error('Сервис не подтвердил отправку');
   form.classList.add('hidden');
   success.querySelector('h3').textContent='Заявка отправлена';
-  success.querySelector('p').textContent='Сайт передал вашу заявку почтовой системе. Мы свяжемся с вами по указанным контактам.';
+  success.querySelector('p').textContent='Спасибо! Свяжемся с вами по указанным контактам.';
   success.querySelector('span').textContent='✓';
   success.classList.remove('hidden');
- }catch(err){submit.disabled=false;submit.innerHTML='Повторить отправку <b>↻</b>';let warning=form.querySelector('.send-error');if(!warning){warning=document.createElement('p');warning.className='send-error';warning.setAttribute('role','alert');warning.style.cssText='color:#9b3e2b;font-size:12px;line-height:1.5;margin:8px 0';submit.insertAdjacentElement('beforebegin',warning);}warning.textContent='Заявка не отправлена. Проверьте подключение и попробуйте ещё раз. Если ошибка повторится, свяжитесь с мастерской по телефону.';}
+  success.focus();
+ }catch(err){submit.disabled=false;submit.innerHTML='Повторить отправку <b aria-hidden="true">↻</b>';let warning=form.querySelector('.send-error');if(!warning){warning=document.createElement('p');warning.className='send-error';warning.setAttribute('role','alert');warning.tabIndex=-1;submit.insertAdjacentElement('beforebegin',warning);}warning.textContent='Заявка не отправлена. Проверьте подключение и попробуйте ещё раз. Если ошибка повторится, свяжитесь с мастерской по телефону.';warning.focus();}
 });
 
-// Единая навигация по разделам: учитываем фиксированную шапку и стабильную позицию цели.
-document.querySelectorAll('a[href="#workshops"]').forEach(link => {
- link.addEventListener('click', event => {
-  event.preventDefault();
-  const target = document.getElementById('workshops');
-  if (!target) return;
-  if (document.getElementById('mobileMenu')) setMenu(false);
-  const offset = document.querySelector('.site-header')?.getBoundingClientRect().height || 0;
-  const y = target.getBoundingClientRect().top + window.scrollY - offset - 10;
-  window.scrollTo({top:Math.max(0,y),behavior:'smooth'});
-  if (history.replaceState) history.replaceState(null,'','#workshops');
- });
-});
 const burger=document.getElementById('burger'),mobile=document.getElementById('mobileMenu');
-function setMenu(open){mobile.classList.toggle('open',open);burger.setAttribute('aria-expanded',open?'true':'false')}
+function setMenu(open,returnFocus=false){mobile.classList.toggle('open',open);burger.setAttribute('aria-expanded',open?'true':'false');syncScrollLock();if(!open&&returnFocus)burger.focus()}
 burger.addEventListener('click',()=>setMenu(!mobile.classList.contains('open')));
 document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mobile.classList.contains('open')){e.preventDefault();setMenu(false,true)}});
 window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('progress').style.width=(h?window.scrollY/h*100:0)+'%'});
 document.documentElement.classList.add('js');
 const lateReveal=document.documentElement.classList.contains('reveal-fallback');
@@ -98,7 +101,8 @@ try{
 }finally{
  clearTimeout(window.__revealFallback);
 }
-
+form.addEventListener('invalid',e=>{if(e.target.matches('input,select,textarea'))e.target.setAttribute('aria-invalid','true')},true);
+form.addEventListener('input',e=>{if(e.target.matches('input,select,textarea'))e.target.removeAttribute('aria-invalid')});
 
 // Полноэкранный просмотр фотографий гостей.
 (() => {
@@ -140,6 +144,7 @@ try{
   lastTrigger = button;
   show(Number(button.dataset.guestIndex));
   lightbox.showModal();
+  syncScrollLock();
   document.getElementById('guestLightboxClose').focus();
  });
  document.getElementById('guestPrev').addEventListener('click', () => show(selected - 1));
@@ -150,5 +155,5 @@ try{
   if (e.key === 'ArrowLeft') { e.preventDefault(); show(selected - 1); }
   if (e.key === 'ArrowRight') { e.preventDefault(); show(selected + 1); }
  });
- lightbox.addEventListener('close', () => { if (lastTrigger) lastTrigger.focus(); });
+ lightbox.addEventListener('close', () => { syncScrollLock(); if (lastTrigger) lastTrigger.focus(); });
 })();

@@ -17,13 +17,13 @@ ROOT = str(Path(__file__).resolve().parents[1])
 
 # sizes = измеренные css-ширины бокса по диапазонам вьюпорта (per-image.mjs @1920/1280/760/390)
 SIZES = {
-    "classes": "(min-width:1051px) 385px, (min-width:701px) 339px, 362px",
-    "guests": "(min-width:1051px) 384px, (min-width:701px) 222px, 176px",
+    "classes": "(min-width:1051px) 385px, (min-width:701px) calc((100vw - 68px) / 2), calc(100vw - 28px)",
+    "guests": "(min-width:1051px) 384px, (min-width:701px) calc((100vw - 84px) / 3), calc((100vw - 38px) / 2)",
     "entrance": "(min-width:1051px) 1120px, (min-width:701px) 689px, 362px",
     "about": "(min-width:1051px) 547px, (min-width:701px) 337px, 362px",
-    "cert": "(min-width:901px) 460px, 362px",
+    "cert": "(min-width:516px) 460px, calc(100vw - 28px)",
     "logo-hero": "(min-width:701px) 245px, 176px",
-    "logo-header": "126px",
+    "logo-header": "(min-width:701px) 54px, 44px",
 }
 DROP_ATTRS = {"src", "width", "height", "srcset", "sizes", "decoding", "data-full", "data-full-dims"}
 

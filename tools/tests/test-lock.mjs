@@ -26,7 +26,7 @@ const out = await withBrowser(async ({ evaluate, sleep }) => {
   await evaluate(`document.querySelector('#modal [data-close]').click(); 'x'`); await snap('закрыт booking после перехода');
 
   await evaluate(`document.querySelector('.guest-photo').click(); 'x'`); await snap('открыт лайтбокс');
-  await evaluate(`document.getElementById('guestLightboxClose').click(); 'x'`); await snap('закрыт лайтбокс (lock не должен появиться)');
+  await evaluate(`document.getElementById('guestLightboxClose').click(); 'x'`); await snap('закрыт лайтбокс (lock снят)');
 
   return L;
 });

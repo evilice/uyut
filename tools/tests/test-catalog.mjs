@@ -43,7 +43,7 @@ if (CASE === 'blocked') {
       mo.observe(grid, { childList: true });
       document.querySelector('#filters [data-filter="kids"]').click();
       const visibleKids = cards.filter(c => getComputedStyle(c).display !== 'none').length;
-      const kidsExpected = window.WORKSHOPS.filter(w => w.category === 'kids').length;
+      const kidsExpected = window.WORKSHOPS.filter(w => (w.categories || [w.category]).includes('kids')).length;
       document.querySelector('#filters [data-filter="all"]').click();
       await new Promise(resolve => setTimeout(resolve, 80));
       mo.disconnect();
