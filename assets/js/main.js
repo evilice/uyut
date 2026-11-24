@@ -10,27 +10,6 @@ function adaptedPicture(src, alt, sizes, eager){
  return `<picture><source type="image/avif" srcset="${ss(v.avif)}" sizes="${sizes}">`+
   `<img src="${v.webp[0]}" alt="${alt}" srcset="${ss(v.webp)}" sizes="${sizes}" width="${v.ratio[0]}" height="${v.ratio[1]}"${load} decoding="async"></picture>`;
 }
-const filters=document.getElementById('filters');
-const filterStatus=document.getElementById('filterStatus');
-const catalogEmpty=document.getElementById('catalogEmpty');
-filters?.addEventListener('click',e=>{
- const btn=e.target.closest('button[data-filter]');if(!btn)return;
- const cards=[...document.querySelectorAll('#cards .work-card')];
- filters.querySelectorAll('button').forEach(x=>{
-  const active=x===btn;
-  x.classList.toggle('active',active);
-  x.setAttribute('aria-pressed',active?'true':'false');
- });
- let shown=0;
- cards.forEach(card=>{
-  const categories=(card.dataset.category||'').split(/\s+/);
-  const hide=btn.dataset.filter!=='all'&&!categories.includes(btn.dataset.filter);
-  card.classList.toggle('hidden',hide);
-  if(!hide) shown++;
- });
- if(filterStatus) filterStatus.textContent=`Показано ${shown} из ${cards.length}`;
- catalogEmpty?.classList.toggle('hidden',shown!==0);
-});
 const modal=document.getElementById('modal'), form=document.getElementById('modalForm');
 function openForm(type,workshop=''){document.body.classList.add('lock');if(!modal.open)modal.showModal();focusDialog(modal);document.getElementById('formType').value=type;document.getElementById('workshopInput').value=workshop||'Помогите выбрать мастер-класс';const event=type==='event',cert=type==='certificate';document.getElementById('modalKicker').textContent=event?'Мероприятие':cert?'Подарочный сертификат':'Запись';document.getElementById('modalTitle').textContent=event?'Обсудить мероприятие':cert?'Купить сертификат':'Записаться';document.getElementById('modalDesc').textContent=event?'Расскажите, какой повод планируете, сколько будет гостей и где хотите провести мероприятие. Мы предложим подходящие мастер-классы и согласуем детали.':cert?'Мы свяжемся с вами, чтобы оформить сертификат и согласовать способ оплаты.':'Выбранное занятие уже указано в форме. Оставьте контакты — мы свяжемся с вами.';document.getElementById('bookingFields').classList.toggle('hidden',event||cert);document.getElementById('eventFields').classList.toggle('hidden',!event);document.getElementById('certFields').classList.toggle('hidden',!cert);document.getElementById('workshopField').classList.toggle('hidden',event||cert);form.classList.remove('hidden');document.getElementById('success').classList.add('hidden')}
 function closeModal(){if(modal.open)modal.close()}

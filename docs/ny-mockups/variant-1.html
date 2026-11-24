@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru" class="js">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>УЮТ — новогодний макет · вариант 1 «Тёплый свет»</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="../../assets/css/styles.css" rel="stylesheet"/>
+<style>
+/* Вариант 1 «Тёплый свет»: гирлянда с тёплым свечением, боке, мягкий снег. */
+.reveal{opacity:1!important;transform:none!important}
+.ny-bar{background:linear-gradient(90deg,#0a5848,#003d31 55%,#0a5848);color:#e9d9ae;font-size:10px;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:9px 16px;border-bottom:1px solid rgba(217,186,120,.35)}
+.ny-bar b{color:var(--gold);font-weight:600}
+.ny-lights-glow{position:absolute;inset:0;z-index:1;pointer-events:none;background:
+ radial-gradient(620px 240px at 22% 4%,rgba(255,196,110,.15),transparent 70%),
+ radial-gradient(620px 240px at 78% 4%,rgba(255,196,110,.13),transparent 70%),
+ radial-gradient(560px 460px at 82% 46%,rgba(255,178,92,.11),transparent 72%)}
+.ny-bokeh{position:absolute;border-radius:50%;pointer-events:none;z-index:1;filter:blur(1px);background:radial-gradient(circle,rgba(255,206,130,.32) 0%,rgba(255,206,130,0) 70%)}
+.ny-garland{position:absolute;top:0;left:0;width:100%;height:170px;z-index:1;pointer-events:none}
+.ny-snow{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.hero-art:before{content:'';position:absolute;right:10px;top:-40px;width:480px;height:620px;background:radial-gradient(closest-side,rgba(255,190,110,.24),transparent 76%);z-index:0;pointer-events:none}
+.hero-card-main{z-index:1}
+.hero-stamp{display:grid!important;right:26px;bottom:20px;z-index:2;box-shadow:0 0 34px rgba(255,190,110,.16)}
+@media(max-width:700px){.hero-stamp{right:20px;bottom:5px}}
+.ny-card-snow{position:absolute;top:0;left:0;width:100%;height:16px;z-index:2;pointer-events:none}
+.workshops{position:relative;background:radial-gradient(900px 320px at 50% 0,#0c4536,var(--green) 72%)}
+.ny-garland-section{position:absolute;top:0;left:0;width:100%;height:110px;z-index:0;pointer-events:none;opacity:.95}
+.workshops .wrap{position:relative;z-index:1}
+.ny-card-swag{position:absolute;top:0;left:0;width:100%;height:44px;z-index:3;pointer-events:none}
+.ny-snowcap{position:absolute;top:0;left:0;width:100%;height:13px;z-index:2;pointer-events:none}
+@media(max-width:650px){
+ .ny-garland{height:130px}
+ .ny-bokeh:nth-child(odd){display:none}
+ .hero-art:before{right:-40px;top:-20px;width:340px;height:420px}
+ .ny-garland-section{height:80px}
+}
+</style>
+</head>
+<body>
+<div class="ny-bar"><b>✦</b>&ensp;Новогодние мастер-классы и подарочные сертификаты — запись открыта&ensp;<b>✦</b></div>
+<header class="site-header" id="top">
+<div class="wrap header-inner">
+<a aria-label="УЮТ — на главную" class="logo-lockup" href="#top">
+<img alt="УЮТ — мастерская творчества" class="brand-logo" src="../../assets/img/logo/logo-original-crop-403.webp" width="403" height="474" decoding="async"/>
+</a>
+<nav aria-label="Основная навигация" class="main-nav">
+<a href="#about">О нас</a><a href="#workshops">Мастер-классы</a><a href="#events">Праздники</a><a href="#certificate">Сертификат</a><a href="#guests">Наши гости</a><a href="#contacts">Контакты</a>
+</nav>
+<a class="header-phone" href="tel:+79085403888">+7 908 540-38-88</a>
+<button aria-label="Меню" aria-expanded="false" type="button" class="burger"><i></i><i></i></button>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="hero-orbit hero-orbit-a"></div><div class="hero-orbit hero-orbit-b"></div>
+<div class="ny-lights-glow"></div>
+<div class="ny-bokeh" style="left:4%;top:18%;width:90px;height:90px;opacity:.5"></div>
+<div class="ny-bokeh" style="left:12%;top:62%;width:54px;height:54px;opacity:.4"></div>
+<div class="ny-bokeh" style="left:26%;top:30%;width:36px;height:36px;opacity:.5"></div>
+<div class="ny-bokeh" style="left:46%;top:70%;width:70px;height:70px;opacity:.35"></div>
+<div class="ny-bokeh" style="left:58%;top:16%;width:44px;height:44px;opacity:.45"></div>
+<div class="ny-bokeh" style="left:70%;top:58%;width:110px;height:110px;opacity:.4"></div>
+<div class="ny-bokeh" style="left:84%;top:26%;width:60px;height:60px;opacity:.5"></div>
+<div class="ny-bokeh" style="left:92%;top:66%;width:40px;height:40px;opacity:.4"></div>
+<svg class="ny-garland" viewBox="0 0 1440 170" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
+<defs>
+<radialGradient id="g1"><stop offset="0" stop-color="#ffcf7e" stop-opacity=".5"/><stop offset="1" stop-color="#ffcf7e" stop-opacity="0"/></radialGradient>
+<radialGradient id="b1" cx=".38" cy=".34" r=".8"><stop offset="0" stop-color="#fff3d6"/><stop offset="1" stop-color="#f0b45c"/></radialGradient>
+<radialGradient id="b2" cx=".38" cy=".34" r=".8"><stop offset="0" stop-color="#fffaf0"/><stop offset="1" stop-color="#ffd98f"/></radialGradient>
+</defs>
+<path d="M0,20 Q360,140 720,20 Q1080,140 1440,20" fill="none" stroke="rgba(226,196,138,.55)" stroke-width="1.6"/>
+<g>
+<g transform="translate(72,41.6)"><path d="M0,0 v10" stroke="#8a6a33" stroke-width="1.4"/><rect x="-2.5" y="9" width="5" height="4" rx="1" fill="#8a6a33"/><circle cy="19" r="15" fill="url(#g1)"/><circle cy="18" r="5" fill="url(#b1)"/><circle cx="-1.5" cy="16.4" r="1.4" fill="#fff6e0" opacity=".9"/></g>
+<g transform="translate(144,58.4)"><path d="M0,0 v10" stroke="#8a6a33" stroke-width="1.4"/><rect x="-2.5" y="9" width="5" height="4" rx="1" fill="#8a6a33"/><circle cy="19" r="15" fill="url(#g1)"/><circle cy="18" r="5" fill="url(#b2)"/><circle cx="-1.5" cy="16.4" r="1.4" fill="#fff6e0" opacity=".9"/></g>
+<g transform="translate(216,70.4)"><path d="M0,0 v10" stroke="#8a6a33" stroke-width="1.4"/><rect x="-2.5" y="9" width="5" height="4" rx="1" fill="#8a6a33"/><circle cy="19" r="15" fill="url(#g1)"/><circle cy="18" r="5" fill="url(#b1)"/><circle cx="-1.5" cy="16.4" r="1.4" fill="#fff6e0" opacity=".9"/></g>
+<g transform="translate(288,77.6)"><path d="M0,0 v10" stroke="#8a6a33" stroke-width="1.4"/><rect x="-2.5" y="9" width="5" height="4" rx="1" fill="#8a6a33"/><circle cy="19" r="15" fill="url(#g1)"/><circle cy="18" r="5" fill="url(#b2)"/><circle cx="-1.5" cy="16.4" r="1.4" fill="#fff6e0" opacity=".9"/></g>
+<g transform="translate(360,80)"><path d="M0,0 v10" stroke="#8a6a33" stroke-width="1.4"/><rect x="-2.5" y="9" width="5" height="4" rx="1" fill="#8a6a33"/><circle cy="19" r="15" fill="url(#g1)"/><circle cy="18" r="5" fill="url(#b1)"/><circle cx="-1.5" cy="16.4" r="1.4" fill="#fff6e0" opacity=".9"/></g>
+<g transform="translate(432,77.6)"><path d="M0,0 v10" stroke="#8a6a33" stroke-width="1.4"/><rect x="-2.5" y="9" width="5" height="4" rx="1" fill="#8a6a33"/><circle cy="19" r="15" fill="url(#g1)"/><circle cy="18" r="5" fill="url(#b2)"/><circle cx="-1.5" cy="16.4" r="1.4" fill="#fff6e0" opacity=".9"/></g>
+<g transform="translate(504,70.4)"><path d="M0,0 v10" stroke="#8a6a33" stroke-width="1.4"/><rect x="-2.5" y="9" width="5" height="4" rx="1" fill="#8a6a33"/><circle cy="19" r="15" fill="url(#g1)"/><circle cy="18" r="5" fill="url(#b1)"/><circle cx="-1.5" cy="16.4" r="1.4" fill="#fff6e0" opacity=".9"/></g>
+<g transform="translate(576,58.4)"><path d="M0,0 v10" stroke="#8a6a33" stroke-width="1.4"/><rect x="-2.5" y="9" width="5" height="4" rx="1" fill="#8a6a33"/><circle cy="19" r="15" fill="url(#g1)"/><circle cy="18" r="5" fill="url(#b2)"/><circle cx="-1.5" cy="16.4" r="1.4" fill="#fff6e0" opacity=".9"/></g>
+<g transform="translate(648,41.6)"><path d="M0,0 v10" stroke="#8a6a33" stroke-width="1.4"/><rect x="-2.5" y="9" width="5" height="4" rx="1" fill="#8a6a33"/><circle cy="19" r="15" fill="url(#g1)"/><circle cy="18" r="5" fill="url(#b1)"/><circle cx="-1.5" cy="16.4" r="1.4" fill="#fff6e0" opacity=".9"/></g>
+<g transform="translate(792,41.6)"><path d="M0,0 v10" stroke="#8a6a33" stroke-width="1.4"/><rect x="-2.5" y="9" width="5" height="4" rx="1" fill="#8a6a33"/><circle cy="19" r="15" fill="url(#g1)"/><circle cy="18" r="5" fill="url(#b2)"/><circle cx="-1.5" cy="16.4" r="1.4" fill="#fff6e0" opacity=".9"/></g>
+<g transform="translate(864,58.4)"><path d="M0,0 v10" stroke="#8a6a33" stroke-width="1.4"/><rect x="-2.5" y="9" width="5" height="4" rx="1" fill="#8a6a33"/><circle cy="19" r="15" fill="url(#g1)"/><circle cy="18" r="5" fill="url(#b1)"/><circle cx="-1.5" cy="16.4" r="1.4" fill="#fff6e0" opacity=".9"/></g>
+<g transform="translate(936,70.4)"><path d="M0,0 v10" stroke="#8a6a33" stroke-width="1.4"/><rect x="-2.5" y="9" width="5" height="4" rx="1" fill="#8a6a33"/><circle cy="19" r="15" fill="url(#g1)"/><circle cy="18" r="5" fill="url(#b2)"/><circle cx="-1.5" cy="16.4" r="1.4" fill="#fff6e0" opacity=".9"/></g>
+<g transform="translate(1008,77.6)"><path d="M0,0 v10" stroke="#8a6a33" stroke-width="1.4"/><rect x="-2.5" y="9" width="5" height="4" rx="1" fill="#8a6a33"/><circle cy="19" r="15" fill="url(#g1)"/><circle cy="18" r="5" fill="url(#b1)"/><circle cx="-1.5" cy="16.4" r="1.4" fill="#fff6e0" opacity=".9"/></g>
+<g transform="translate(1080,80)"><path d="M0,0 v10" stroke="#8a6a33" stroke-width="1.4"/><rect x="-2.5" y="9" width="5" height="4" rx="1" fill="#8a6a33"/><circle cy="19" r="15" fill="url(#g1)"/><circle cy="18" r="5" fill="url(#b2)"/><circle cx="-1.5" cy="16.4" r="1.4" fill="#fff6e0" opacity=".9"/></g>
+<g transform="translate(1152,77.6)"><path d="M0,0 v10" stroke="#8a6a33" stroke-width="1.4"/><rect x="-2.5" y="9" width="5" height="4" rx="1" fill="#8a6a33"/><circle cy="19" r="15" fill="url(#g1)"/><circle cy="18" r="5" fill="url(#b1)"/><circle cx="-1.5" cy="16.4" r="1.4" fill="#fff6e0" opacity=".9"/></g>
+<g transform="translate(1224,70.4)"><path d="M0,0 v10" stroke="#8a6a33" stroke-width="1.4"/><rect x="-2.5" y="9" width="5" height="4" rx="1" fill="#8a6a33"/><circle cy="19" r="15" fill="url(#g1)"/><circle cy="18" r="5" fill="url(#b2)"/><circle cx="-1.5" cy="16.4" r="1.4" fill="#fff6e0" opacity=".9"/></g>
+<g transform="translate(1296,58.4)"><path d="M0,0 v10" stroke="#8a6a33" stroke-width="1.4"/><rect x="-2.5" y="9" width="5" height="4" rx="1" fill="#8a6a33"/><circle cy="19" r="15" fill="url(#g1)"/><circle cy="18" r="5" fill="url(#b1)"/><circle cx="-1.5" cy="16.4" r="1.4" fill="#fff6e0" opacity=".9"/></g>
+<g transform="translate(1368,41.6)"><path d="M0,0 v10" stroke="#8a6a33" stroke-width="1.4"/><rect x="-2.5" y="9" width="5" height="4" rx="1" fill="#8a6a33"/><circle cy="19" r="15" fill="url(#g1)"/><circle cy="18" r="5" fill="url(#b2)"/><circle cx="-1.5" cy="16.4" r="1.4" fill="#fff6e0" opacity=".9"/></g>
+</g>
+</svg>
+<svg class="ny-snow" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<g fill="#fffdf8">
+<circle cx="60" cy="210" r="1.6" opacity=".5"/><circle cx="180" cy="340" r="2.2" opacity=".4"/><circle cx="320" cy="150" r="1.2" opacity=".6"/><circle cx="420" cy="420" r="1.8" opacity=".35"/><circle cx="540" cy="260" r="2.4" opacity=".45"/><circle cx="660" cy="500" r="1.4" opacity=".5"/><circle cx="760" cy="180" r="2" opacity=".4"/><circle cx="880" cy="380" r="1.6" opacity=".55"/><circle cx="980" cy="240" r="2.6" opacity=".35"/><circle cx="1080" cy="460" r="1.8" opacity=".45"/><circle cx="1180" cy="150" r="1.4" opacity=".6"/><circle cx="1280" cy="320" r="2.2" opacity=".4"/><circle cx="1380" cy="220" r="1.6" opacity=".5"/><circle cx="240" cy="560" r="2" opacity=".35"/><circle cx="500" cy="620" r="1.5" opacity=".45"/><circle cx="900" cy="600" r="2.2" opacity=".35"/><circle cx="1240" cy="560" r="1.7" opacity=".45"/><circle cx="1400" cy="480" r="2" opacity=".4"/><circle cx="100" cy="480" r="1.3" opacity=".5"/><circle cx="700" cy="320" r="1.2" opacity=".5"/>
+</g>
+</svg>
+<div class="wrap hero-grid">
+<div class="hero-copy reveal">
+<div class="kicker"><span></span> Энгельс · Маяковского, 47а</div>
+<h1>Добро пожаловать<br/><em>в мастерскую</em><br/>творчества «Уют»</h1>
+<p>Здесь можно ненадолго отложить повседневные дела, попробовать что-то новое и провести время за творчеством.</p>
+<div class="hero-actions"><a class="button button-gold" href="#workshops">Выбрать мастер-класс <b>↗</b></a><button class="button button-line" type="button">Придумать праздник</button></div>
+<div class="hero-note"><span class="spark">✦</span><span>Опыт не нужен</span><span>Все материалы включены</span><span>По предварительной записи</span></div>
+</div>
+<div class="hero-art reveal reveal-delay">
+<div class="hero-card-main">
+<svg class="ny-card-snow" viewBox="0 0 340 18" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 H340 V6 C300,14 260,4 220,9 C180,14 140,5 100,10 C60,15 30,7 0,11 Z" fill="#fffdf8" opacity=".92"/></svg>
+<div class="hero-card-top"><span>УЮТ</span><span>01 / 06</span></div>
+<img alt="Оригинальный логотип мастерской «УЮТ»" class="hero-original-logo" src="../../assets/img/logo/logo-original-crop-403.webp" width="403" height="474" decoding="async"/>
+<div class="hero-card-bottom"><span>создаём руками</span><span>Энгельс</span></div>
+</div>
+<div class="hero-stamp">с новым<br/>годом<br/><b>✦</b></div>
+</div>
+</div>
+<a class="scroll-cue" href="#workshops"><span>листайте</span><b>↓</b></a>
+</section>
+<section class="workshops" id="workshops">
+<svg class="ny-garland-section" viewBox="0 0 1440 110" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
+<defs>
+<radialGradient id="g2"><stop offset="0" stop-color="#ffcf7e" stop-opacity=".45"/><stop offset="1" stop-color="#ffcf7e" stop-opacity="0"/></radialGradient>
+<radialGradient id="b3" cx=".38" cy=".34" r=".8"><stop offset="0" stop-color="#fff3d6"/><stop offset="1" stop-color="#f0b45c"/></radialGradient>
+</defs>
+<path d="M0,14 Q720,110 1440,14" fill="none" stroke="rgba(226,196,138,.5)" stroke-width="1.4"/>
+<g>
+<g transform="translate(144,31.3)"><path d="M0,0 v8" stroke="#8a6a33" stroke-width="1.2"/><circle cy="15" r="12" fill="url(#g2)"/><circle cy="14" r="4" fill="url(#b3)"/></g>
+<g transform="translate(288,44.7)"><path d="M0,0 v8" stroke="#8a6a33" stroke-width="1.2"/><circle cy="15" r="12" fill="url(#g2)"/><circle cy="14" r="4" fill="url(#b3)"/></g>
+<g transform="translate(432,54.3)"><path d="M0,0 v8" stroke="#8a6a33" stroke-width="1.2"/><circle cy="15" r="12" fill="url(#g2)"/><circle cy="14" r="4" fill="url(#b3)"/></g>
+<g transform="translate(576,60.1)"><path d="M0,0 v8" stroke="#8a6a33" stroke-width="1.2"/><circle cy="15" r="12" fill="url(#g2)"/><circle cy="14" r="4" fill="url(#b3)"/></g>
+<g transform="translate(720,62)"><path d="M0,0 v8" stroke="#8a6a33" stroke-width="1.2"/><circle cy="15" r="12" fill="url(#g2)"/><circle cy="14" r="4" fill="url(#b3)"/></g>
+<g transform="translate(864,60.1)"><path d="M0,0 v8" stroke="#8a6a33" stroke-width="1.2"/><circle cy="15" r="12" fill="url(#g2)"/><circle cy="14" r="4" fill="url(#b3)"/></g>
+<g transform="translate(1008,54.3)"><path d="M0,0 v8" stroke="#8a6a33" stroke-width="1.2"/><circle cy="15" r="12" fill="url(#g2)"/><circle cy="14" r="4" fill="url(#b3)"/></g>
+<g transform="translate(1152,44.7)"><path d="M0,0 v8" stroke="#8a6a33" stroke-width="1.2"/><circle cy="15" r="12" fill="url(#g2)"/><circle cy="14" r="4" fill="url(#b3)"/></g>
+<g transform="translate(1296,31.3)"><path d="M0,0 v8" stroke="#8a6a33" stroke-width="1.2"/><circle cy="15" r="12" fill="url(#g2)"/><circle cy="14" r="4" fill="url(#b3)"/></g>
+</g>
+</svg>
+<div class="wrap">
+<div class="section-intro reveal"><div class="section-label light">02 <span>Выбирайте своё</span></div><h2>Мастер-классы</h2><p>Картины, мозаика, декор, свечи и сладкие подарки. В стоимость входят материалы и помощь мастера.</p></div>
+<div class="rules reveal"><span>от 2 человек</span><span>индивидуально +500 ₽</span><span>именинникам −10%</span><span>пробная живопись — 450 ₽</span></div>
+<div class="filter-row"><button class="active" type="button">Все</button><button type="button">Живопись</button><button type="button">Декор</button><button type="button">Мозаика</button><button type="button">Сладкое</button><button type="button">Для детей</button></div>
+<div class="workshop-grid">
+<article class="work-card"><div class="work-visual"><img alt="Интерьерная картина с текстурной пастой и поталью" src="../../assets/img/classes/photo-15-770.webp" width="770" height="1027" decoding="async"/><svg class="ny-card-swag" viewBox="0 0 385 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0,4 Q192,52 385,4" fill="none" stroke="rgba(226,196,138,.6)" stroke-width="1.2"/><g fill="#ffd98f"><circle cx="77" cy="30.4" r="3.6"/><circle cx="135" cy="36.8" r="3.6"/><circle cx="192" cy="39" r="3.6"/><circle cx="250" cy="36.8" r="3.6"/><circle cx="308" cy="30.4" r="3.6"/></g><g fill="#ffcf7e" opacity=".3"><circle cx="77" cy="30.4" r="9"/><circle cx="135" cy="36.8" r="9"/><circle cx="192" cy="39" r="9"/><circle cx="250" cy="36.8" r="9"/><circle cx="308" cy="30.4" r="9"/></g></svg><span class="work-tag">Живопись</span></div><div class="work-body"><h3>Интерьерная картина с текстурной пастой и поталью</h3><div class="meta"><span>10+</span><span>·</span><span>2 часа</span></div><p>Создайте фактурную картину с объёмными деталями и сияющими акцентами потали. Подберём цвета и композицию, которые хочется видеть в своём доме.</p><div class="work-bottom"><span class="price">1 600 ₽</span><div class="card-actions"><button class="mini-btn detail" type="button">Подробнее</button><button class="mini-btn primary book" type="button">Записаться</button></div></div></div></article>
+<article class="work-card"><div class="work-visual"><img alt="Объёмная картина Лимоны и ягоды" src="../../assets/img/classes/original-01-753.webp" width="753" height="563" decoding="async"/><svg class="ny-card-swag" viewBox="0 0 385 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0,4 Q192,52 385,4" fill="none" stroke="rgba(226,196,138,.6)" stroke-width="1.2"/><g fill="#ffd98f"><circle cx="77" cy="30.4" r="3.6"/><circle cx="135" cy="36.8" r="3.6"/><circle cx="192" cy="39" r="3.6"/><circle cx="250" cy="36.8" r="3.6"/><circle cx="308" cy="30.4" r="3.6"/></g><g fill="#ffcf7e" opacity=".3"><circle cx="77" cy="30.4" r="9"/><circle cx="135" cy="36.8" r="9"/><circle cx="192" cy="39" r="9"/><circle cx="250" cy="36.8" r="9"/><circle cx="308" cy="30.4" r="9"/></g></svg><span class="work-tag">Живопись</span></div><div class="work-body"><h3>Объёмная картина Лимоны и ягоды</h3><div class="meta"><span>10+</span><span>·</span><span>1,5–2 часа</span></div><p>Лимоны, малина или другие ягоды станут главным акцентом вашей картины. Сочетаем живопись и объёмные элементы, чтобы создать яркий декор.</p><div class="work-bottom"><span class="price">1 600 ₽</span><div class="card-actions"><button class="mini-btn detail" type="button">Подробнее</button><button class="mini-btn primary book" type="button">Записаться</button></div></div></div></article>
+<article class="work-card"><div class="work-visual"><img alt="Картина Чебурашка" src="../../assets/img/classes/original-02-753.webp" width="753" height="563" decoding="async"/><svg class="ny-card-swag" viewBox="0 0 385 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0,4 Q192,52 385,4" fill="none" stroke="rgba(226,196,138,.6)" stroke-width="1.2"/><g fill="#ffd98f"><circle cx="77" cy="30.4" r="3.6"/><circle cx="135" cy="36.8" r="3.6"/><circle cx="192" cy="39" r="3.6"/><circle cx="250" cy="36.8" r="3.6"/><circle cx="308" cy="30.4" r="3.6"/></g><g fill="#ffcf7e" opacity=".3"><circle cx="77" cy="30.4" r="9"/><circle cx="135" cy="36.8" r="9"/><circle cx="192" cy="39" r="9"/><circle cx="250" cy="36.8" r="9"/><circle cx="308" cy="30.4" r="9"/></g></svg><span class="work-tag">Для детей</span></div><div class="work-body"><h3>Картина Чебурашка</h3><div class="meta"><span>5+</span><span>·</span><span>1,5–2 часа</span></div><p>Нарисуем любимого героя и дополним картину объёмными деталями. Мастер поможет пройти все этапы — от первых линий до завершающих штрихов.</p><div class="work-bottom"><span class="price">1 500 ₽</span><div class="card-actions"><button class="mini-btn detail" type="button">Подробнее</button><button class="mini-btn primary book" type="button">Записаться</button></div></div></div></article>
+</div>
+</div>
+</section>
+</main>
+<footer><div class="wrap footer-inner"><span>© 2026 УЮТ · мастерская творчества</span><a href="#top">Наверх ↑</a></div></footer>
+</body>
+</html>

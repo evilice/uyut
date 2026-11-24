@@ -22,7 +22,6 @@ const out = await withBrowser(async ({ evaluate }) => evaluate(`(()=>{
     }).length,
     reveals: reveals.length,
     hiddenReveals: reveals.filter(el=>getComputedStyle(el).opacity==='0').length,
-    filtersHidden: getComputedStyle(document.querySelector('.filter-row')).display==='none',
     actionsHidden: getComputedStyle(document.querySelector('#cards .card-actions')).display==='none',
     sections: [...document.querySelectorAll('section')].map(s=>Math.round(s.getBoundingClientRect().height)),
   };
@@ -32,7 +31,6 @@ check('html.js не выставлен', out.js === false);
 check('карточек = N', out.cards === N, `${out.cards}/${N}`);
 check('все карточки видимы', out.visibleCards === N, `${out.visibleCards}/${N}`);
 check('нет скрытых .reveal', out.hiddenReveals === 0, `${out.hiddenReveals}/${out.reveals}`);
-check('фильтры скрыты без JS', out.filtersHidden === true);
 check('кнопки карточек скрыты без JS', out.actionsHidden === true);
 check('у всех секций ненулевая высота', out.sections.length > 0 && out.sections.every(h => h > 0), out.sections.join(','));
 

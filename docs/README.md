@@ -102,14 +102,18 @@
 
 21 карточка теперь статически лежит в `index.html` (источник истины —
 `assets/data/workshops.json`, генератор — `tools/build-catalog.py`). Поисковик и
-человек без JS видят предложение; фильтры переключают видимость готовых карточек,
-а не пересобирают `innerHTML` (картинки не перезагружаются). У `.reveal` появился
+человек без JS видят предложение. У `.reveal` появился
 фолбэк: без JS контент виден, при падении/задержке `main.js` — через 3 с.
 
 Замеры: `grep -c 'work-card' index.html` = 21, `<picture>` = 35 (14 + 21 карточка);
 на момент шага `index.html` был 63.7 КБ raw / 12.8 КБ gzip, `catalog.js` — 20.0 / 4.9 КБ
 (актуальные размеры — в разделе «Текущие размеры»).
 Диффы скриншотов 1920/1280/760/390 = **0 пикселей**, контрольная пара = 0.
+
+**24.11.2026 фильтры каталога удалены** по решению владельца: кнопки `#filters`,
+`#filterStatus`, `.catalog-empty`, обработчик в `main.js`, стили `.filter-*` /
+`.catalog-empty` и атрибут `data-category` (включая генератор). Каталог остаётся
+статическим: все 21 карточка видны сразу, без JS-зависимости.
 
 ### 6. Мёртвый код в форме и `main.js`
 
@@ -143,11 +147,11 @@ hidden-поля `_subject`/`_template` (наследие Formspree — `send.php
 
 | Файл | Размер |
 |---|---|
-| `index.html` | 75.5 КБ (14.4 КБ gzip) |
-| `assets/css/styles.css` | 35.3 КБ (8.0 КБ gzip) |
-| `assets/js/main.js` | 14.0 КБ (5.0 КБ gzip) |
-| `assets/js/catalog.js` | 20.6 КБ (5.1 КБ gzip) |
-| `assets/js/images.js` | 8.5 КБ (1.1 КБ gzip) |
+| `index.html` | 72.4 КБ (13.7 КБ gzip) |
+| `assets/css/styles.css` | 34.8 КБ (7.7 КБ gzip) |
+| `assets/js/main.js` | 12.7 КБ (4.6 КБ gzip) |
+| `assets/js/catalog.js` | 20.1 КБ (5.0 КБ gzip) |
+| `assets/js/images.js` | 8.3 КБ (1.1 КБ gzip) |
 | `assets/img/og/og-1200x630.jpg` | 133 КБ — только превью ссылок, на странице не грузится |
 | `assets/img/` | 5.8 МБ на диске, 1.2 МБ реально грузится |
 
@@ -172,7 +176,7 @@ hidden-поля `_subject`/`_template` (наследие Formspree — `send.php
    Карточки и `catalog.js` генерируются из JSON; ручная правка `index.html` затрётся.
    Версия `catalog.js?v=<sha1>` обновляется генератором сама.
 3. **После правки `styles.css` / `main.js` — поднять `?v=`** в `index.html`
-   (сейчас `styles.css` = 5, `main.js` = 5, `images.js` = 1). Без этого `immutable`-кэш
+   (сейчас `styles.css` = 7, `main.js` = 6, `images.js` = 1). Без этого `immutable`-кэш
    из пункта 1 будет держать старые файлы до года.
 4. В `index.html` инлайн-`<style>`/`<script>` не добавлять: из-за каскада правки живут в
    `assets/css/styles.css` и `assets/js/main.js`. **Исключения:** однострочный

@@ -36,25 +36,12 @@ if (CASE === 'blocked') {
     const r = await evaluate(`(async()=>{
       const N = Array.isArray(window.WORKSHOPS) ? window.WORKSHOPS.length : 0;
       const cards = [...document.querySelectorAll('#cards .work-card')];
-      const beforeCards = cards.slice();
-      let mutations = 0;
-      const grid = document.getElementById('cards');
-      const mo = new MutationObserver(list => { for (const m of list) mutations += m.addedNodes.length + m.removedNodes.length; });
-      mo.observe(grid, { childList: true });
-      document.querySelector('#filters [data-filter="kids"]').click();
-      const visibleKids = cards.filter(c => getComputedStyle(c).display !== 'none').length;
-      const kidsExpected = window.WORKSHOPS.filter(w => (w.categories || [w.category]).includes('kids')).length;
-      document.querySelector('#filters [data-filter="all"]').click();
-      await new Promise(resolve => setTimeout(resolve, 80));
-      mo.disconnect();
-      const afterCards = [...document.querySelectorAll('#cards .work-card')];
       const details = [...document.querySelectorAll('#cards .detail')].map(b => +b.dataset.i);
       const books = [...document.querySelectorAll('#cards .book')].map(b => +b.dataset.i);
       const sorted = details.slice().sort((a, b) => a - b);
       const expected = Array.from({ length: N }, (_, i) => i);
       const pictures = document.querySelectorAll('#cards picture').length;
       const avif = document.querySelectorAll('#cards picture source[type="image/avif"]').length;
-      const categories = cards.map(c => c.dataset.category);
       const prices = [...document.querySelectorAll('#cards .price')].map(p => p.textContent);
       const alts = [...document.querySelectorAll('#cards .work-visual img')].map(i => i.getAttribute('alt') || '');
       const stepsCheck = (() => {
@@ -67,12 +54,9 @@ if (CASE === 'blocked') {
         return res;
       })();
       return {
-        N, cards: cards.length, afterCards: afterCards.length, pictures, avif,
+        N, cards: cards.length, pictures, avif,
         detailsOk: JSON.stringify(sorted) === JSON.stringify(expected),
         pairsOk: details.length === books.length && details.every((v, i) => v === books[i]),
-        identity: beforeCards.length === afterCards.length && beforeCards.every((el, i) => el === afterCards[i]),
-        mutations, visibleKids, kidsExpected,
-        categoriesOk: categories.length === N && categories.every(c => typeof c === 'string' && c.length > 0),
         pricesOk: prices.length === N && prices.every(p => p.includes('₽') && !p.includes('&nbsp;') && p.split('₽')[0].trim().length > 0),
         altOk: alts.length === N && alts.every(a => a.length > 0),
         stepsCheck,
@@ -88,10 +72,6 @@ if (CASE === 'blocked') {
   check('AVIF = N', out.avif === out.N, `${out.avif}/${out.N}`);
   check('data-i = 0…N−1', out.detailsOk);
   check('data-i у .detail и .book совпадают', out.pairsOk);
-  check('DOM не пересоздаётся фильтром', out.identity && out.mutations === 0, `identity=${out.identity}, mutations=${out.mutations}`);
-  check('фильтр kids', out.visibleKids === out.kidsExpected, `${out.visibleKids}/${out.kidsExpected}`);
-  check('после «Все» видны все', out.afterCards === out.N, `${out.afterCards}/${out.N}`);
-  check('data-category заполнен', out.categoriesOk);
   check('цены с ₽ и без HTML-сущностей', out.pricesOk);
   check('alt заполнен', out.altOk);
   check('шаги в модалке = данным', out.stepsCheck.count === out.stepsCheck.expected && out.stepsCheck.equal && !out.stepsCheck.entity, JSON.stringify(out.stepsCheck));

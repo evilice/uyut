@@ -46,12 +46,11 @@ def price_text(value):
     return f"{value:,}".replace(",", "\u00a0") + " ₽"
 
 
-def card_html(w, index, category_label, categories):
+def card_html(w, index, category_label):
     i = str(index)
-    cat_list = " ".join(categories)
     title = w["title"]
     return (
-        f'<article class="work-card" data-category="{esc(cat_list)}">'
+        '<article class="work-card">'
         '<div class="work-visual">'
         f'<img src="{esc(w["image"])}" alt="{esc(title)}" loading="lazy" decoding="async"/>'
         f'<span class="work-tag">{esc(category_label)}</span></div>'
@@ -121,7 +120,7 @@ def main():
     workshops, categories = validate(data, manifest)
 
     cards = "\n".join(
-        card_html(w, i, categories[(w.get("categories") or [w["category"]])[0]], w.get("categories") or [w["category"]])
+        card_html(w, i, categories[(w.get("categories") or [w["category"]])[0]])
         for i, w in enumerate(workshops)
     )
 

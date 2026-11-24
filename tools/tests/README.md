@@ -13,8 +13,8 @@ python3 -m http.server 8899 --bind 127.0.0.1
 ```bash
 node tools/tests/test-lock.mjs          # диалоги, lock, Escape, лайтбокс
 node tools/tests/test-form.mjs          # ветки ответа формы: успех / 503 / сеть / stored
-node tools/tests/test-adapted.mjs       # картинки, CLS, фильтры
-node tools/tests/test-catalog.mjs       # статический каталог, data-i, DOM identity
+node tools/tests/test-adapted.mjs       # картинки, CLS, модалки, лайтбокс
+node tools/tests/test-catalog.mjs       # статический каталог, data-i, шаги в модалке
 CASE=blocked node tools/tests/test-catalog.mjs   # catalog.js заблокирован
 node tools/tests/test-nojs.mjs          # JS полностью отключён
 ```
